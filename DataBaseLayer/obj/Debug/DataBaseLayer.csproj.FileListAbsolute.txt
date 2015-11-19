@@ -1,0 +1,10 @@
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\DataBaseLayer.dll.config
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\DataBaseLayer.dll
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\DataBaseLayer.pdb
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\EntityFramework.dll
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\EntityFramework.xml
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\obj\Debug\DataBaseLayer.dll
+C:\WorkSpace\Projects\Lotereya\DataBaseLayer\obj\Debug\DataBaseLayer.pdb
+c:\WorkSpace\Projects\Lotereya\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache

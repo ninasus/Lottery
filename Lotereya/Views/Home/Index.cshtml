@@ -1,0 +1,111 @@
+﻿@model Lotereya.Models.settings
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="selectedElements">
+    @Html.Partial("SelectedElementsPartial", Model.countValue)
+</div>
+
+<div id="priceElements">
+    @Html.Partial("PriceElementsPartial", Model.countValue)
+</div>
+
+<div id="field">
+    @Html.Partial("WorkFieldPartial", new Tuple<int, int>(Model.minValue, Model.maxValue))
+</div>
+
+<div class="container">
+    <input type="text" id="message" />
+    <input type="button" id="sendmessage" value="Send" />
+    <input type="hidden" id="displayname" />
+    <ul id="discussion"></ul>
+</div>
+@section scripts {
+
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+
+    <script src="~/signalr/hubs"></script>
+    <!--SignalR script to update the chat page and send messages.-->
+    <script>
+        $(function () {
+            // Reference the auto-generated proxy for the hub.
+            var chat = $.connection.timing;
+            // Create a function that the hub can call back to display messages.
+            /*chat.client.addNewMessageToPage = function (name, message) {
+                // Add the message to the page.
+                $('#discussion').append('<li><strong>' + htmlEncode(name)
+                    + '</strong>: ' + htmlEncode(message) + '</li>');
+            };*/
+
+            chat.client.addMessage = function (type, tick) {
+                $('#discussion').empty().append('<li><strong>' + htmlEncode(type)
+                   + '</strong>: ' + htmlEncode(tick) + '</li>');
+            }
+            // Get the user name and store it to prepend to messages.
+            //$('#displayname').val(prompt('Enter your name:', ''));
+            // Set initial focus to message input box.
+            $('#message').focus();
+            // Start the connection.
+            $.connection.hub.start().done(function () {
+                //chat.server.timer();
+
+                $('#sendmessage').click(function () {
+                    // Call the Send method on the hub.
+                    chat.server.send($('#displayname').val(), $('#message').val());
+                    // Clear text box and reset focus for next comment.
+                    $('#message').val('').focus();
+                });
+            });
+
+            var cellNumber = 0;
+            var selectedElements = [];
+
+            $(".element").click(function () {
+                if ($(this).hasClass("selectedElement")) {
+                    $(this).removeClass("selectedElement");
+                    $("#play").attr("disabled","disabled");
+
+                    cellNumber = cellNumber - 1;
+                    var valRemove = $(this).text();
+
+                    selectedElements = $.grep(selectedElements,function(value){
+                        return value!=valRemove;
+                    });
+
+                    $("#selectedElements div").each(function(index,value){
+                        if($(value).text()==valRemove)
+                        {
+                            $(value).remove();
+                            $("#selectedElements").append("<div class='elementSel'></div>");
+                            return;
+                        }
+                    });
+                } else {
+                    if(cellNumber<(@Model.countValue))
+                    {
+                        $(this).addClass("selectedElement");
+                        selectedElements[cellNumber] = $(this).text();
+                        cellNumber = cellNumber + 1;
+                        $("#selectedElements").find("div:nth-child("+(cellNumber+1)+")").text($(this).text());
+                        if(cellNumber==(@Model.countValue))
+                            $("#play").removeAttr("disabled");
+                    }
+                }
+            });
+
+
+            $("#reset").click(function(){
+                $("#selectedElements div").text("");
+                $(".element").removeClass("selectedElement");
+                $("#play").attr("disabled","disabled");
+            });
+        });
+        // This optional function html-encodes messages for display in the page.
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+    </script>
+}

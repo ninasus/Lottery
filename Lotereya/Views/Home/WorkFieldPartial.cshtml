@@ -1,0 +1,12 @@
+﻿@model Tuple<int,int>
+
+@for (int i = Model.Item1; i <= Model.Item2; i++)
+{
+    <div class="element" data-id="@i" style="border:1px solid black;min-height:10px;">
+        @i
+    </div>
+}
+
+<input type="button" id="autoSelect" value="Автовыбор" />
+<input type="button" id="reset" value="Сброс" />
+<input type="button" id="play" value="Играть" disabled />

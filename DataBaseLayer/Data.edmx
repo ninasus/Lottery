@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LoterejaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="settings">
+          <Key>
+            <PropertyRef Name="id_settings" />
+          </Key>
+          <Property Name="id_settings" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timeBeforeDraw" Type="int" Nullable="false" />
+          <Property Name="timeDraw" Type="int" Nullable="false" />
+          <Property Name="timeAfterDraw" Type="int" Nullable="false" />
+          <Property Name="minValue" Type="int" Nullable="false" />
+          <Property Name="maxValue" Type="int" Nullable="false" />
+          <Property Name="minJackPot" Type="int" Nullable="false" />
+          <Property Name="stepJackPot" Type="int" Nullable="false" />
+          <Property Name="countValue" Type="int" Nullable="false" />
+          <Property Name="date" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="LoterejaModelStoreContainer">
+          <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoterejaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="setting">
+          <Key>
+            <PropertyRef Name="id_settings" />
+          </Key>
+          <Property Name="id_settings" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timeBeforeDraw" Type="Int32" Nullable="false" />
+          <Property Name="timeDraw" Type="Int32" Nullable="false" />
+          <Property Name="timeAfterDraw" Type="Int32" Nullable="false" />
+          <Property Name="minValue" Type="Int32" Nullable="false" />
+          <Property Name="maxValue" Type="Int32" Nullable="false" />
+          <Property Name="minJackPot" Type="Int32" Nullable="false" />
+          <Property Name="stepJackPot" Type="Int32" Nullable="false" />
+          <Property Name="countValue" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="LoterejaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="settings" EntityType="Self.setting" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoterejaModelStoreContainer" CdmEntityContainer="LoterejaEntities">
+          <EntitySetMapping Name="settings">
+            <EntityTypeMapping TypeName="LoterejaModel.setting">
+              <MappingFragment StoreEntitySet="settings">
+                <ScalarProperty Name="id_settings" ColumnName="id_settings" />
+                <ScalarProperty Name="timeBeforeDraw" ColumnName="timeBeforeDraw" />
+                <ScalarProperty Name="timeDraw" ColumnName="timeDraw" />
+                <ScalarProperty Name="timeAfterDraw" ColumnName="timeAfterDraw" />
+                <ScalarProperty Name="minValue" ColumnName="minValue" />
+                <ScalarProperty Name="maxValue" ColumnName="maxValue" />
+                <ScalarProperty Name="minJackPot" ColumnName="minJackPot" />
+                <ScalarProperty Name="stepJackPot" ColumnName="stepJackPot" />
+                <ScalarProperty Name="countValue" ColumnName="countValue" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LoterejaModelStoreContainer" CdmEntityContainer="LoterejaEntities">
+    <EntitySetMapping Name="settings">
+      <EntityTypeMapping TypeName="LoterejaModel.setting">
+        <MappingFragment StoreEntitySet="settings">
+          <ScalarProperty Name="id_settings" ColumnName="id_settings" />
+          <ScalarProperty Name="timeBeforeDraw" ColumnName="timeBeforeDraw" />
+          <ScalarProperty Name="timeDraw" ColumnName="timeDraw" />
+          <ScalarProperty Name="timeAfterDraw" ColumnName="timeAfterDraw" />
+          <ScalarProperty Name="minValue" ColumnName="minValue" />
+          <ScalarProperty Name="maxValue" ColumnName="maxValue" />
+          <ScalarProperty Name="minJackPot" ColumnName="minJackPot" />
+          <ScalarProperty Name="stepJackPot" ColumnName="stepJackPot" />
+          <ScalarProperty Name="countValue" ColumnName="countValue" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

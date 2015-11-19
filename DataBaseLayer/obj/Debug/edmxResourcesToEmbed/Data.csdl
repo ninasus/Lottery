@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LoterejaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="setting">
+    <Key>
+      <PropertyRef Name="id_settings" />
+    </Key>
+    <Property Name="id_settings" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="timeBeforeDraw" Type="Int32" Nullable="false" />
+    <Property Name="timeDraw" Type="Int32" Nullable="false" />
+    <Property Name="timeAfterDraw" Type="Int32" Nullable="false" />
+    <Property Name="minValue" Type="Int32" Nullable="false" />
+    <Property Name="maxValue" Type="Int32" Nullable="false" />
+    <Property Name="minJackPot" Type="Int32" Nullable="false" />
+    <Property Name="stepJackPot" Type="Int32" Nullable="false" />
+    <Property Name="countValue" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="LoterejaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="settings" EntityType="Self.setting" />
+  </EntityContainer>
+</Schema>
