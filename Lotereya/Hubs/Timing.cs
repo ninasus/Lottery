@@ -11,9 +11,26 @@ namespace Lotereya.Hubs
     {
         static bool isTimerRun;
 
+        public static int Count { get; private set; }
+
+        public override System.Threading.Tasks.Task OnConnected()
+        {
+            Count++;
+            Clients.All.SendCount(Count);
+            return base.OnConnected();
+        }
+
+        public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
+        {
+            Count--;
+            Clients.All.SendCount(Count);
+            return base.OnDisconnected(stopCalled);
+        }
+
         static Timing()
         {
             isTimerRun = false;
+            Count = 0;
         }
         public void Send(string name, string message)
         {

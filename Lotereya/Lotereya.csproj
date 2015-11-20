@@ -191,6 +191,7 @@
     <Content Include="Views\Home\WorkFieldPartial.cshtml" />
     <Content Include="Views\Home\SelectedElementsPartial.cshtml" />
     <Content Include="Views\Home\PriceElementsPartial.cshtml" />
+    <Content Include="Views\Home\GamePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseLayer\DataBaseLayer.csproj">
