@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAd+uCUz58pUCw80Pjnb/caAAAAAACAAAAAAAQZgAAAAEAACAAAACEALMO/Uo4PpSW0pubk8eVW5fIjSUWXxkKDhLZz0eXiwAAAAAOgAAAAAIAACAAAAAe1bGolsAV5eHQ5kycNl6Ac4p2xSBY1AcMp60vBo6HiSAAAAAAkT0z7JkEseF4NVG5Y8RsvLJbJS6dT8uGrHPvLeqA3kAAAACJWtmR36hmL3CwBLERuR5Yoz0SpJsiL7ALAIvSpZDd6cKkRg5i691tZA3NL9hY/STeY8HKu/aL3s2SM8/nn3jO</EncryptedPassword>
+    <_PublishTargetUrl>ftp://93.190.41.25/uh264937.ukrdomen.com</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/DataBaseLayer.dll">
+      <publishTime>11/25/2015 19:57:49</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Lotereya.dll">
+      <publishTime>11/25/2015 22:56:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.Core.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.SignalR.SystemWeb.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Host.SystemWeb.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Owin.Security.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/Owin.dll">
+      <publishTime>11/25/2015 19:54:19</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>11/25/2015 19:54:19</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>11/25/2015 19:54:18</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-2.2.0.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.signalR-2.2.0.min.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/jquery.unobtrusive-ajax.min.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Views/Admin/LotterPartial.cshtml">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Views/Admin/Settings.cshtml">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Views/Home/GamePartial.cshtml">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>11/25/2015 22:54:26</publishTime>
+    </File>
+    <File Include="Views/Home/PriceElementsPartial.cshtml">
+      <publishTime>11/25/2015 22:39:51</publishTime>
+    </File>
+    <File Include="Views/Home/SelectedElementsPartial.cshtml">
+      <publishTime>11/25/2015 22:42:09</publishTime>
+    </File>
+    <File Include="Views/Home/WorkFieldPartial.cshtml">
+      <publishTime>11/25/2015 22:29:37</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>11/25/2015 22:36:04</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>11/25/2015 19:54:17</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/25/2015 19:57:50</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

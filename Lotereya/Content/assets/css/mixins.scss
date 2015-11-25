@@ -1,0 +1,31 @@
+@mixin myborder($height: 8px, $url: "../images/border.png", $pos: "after") {
+	@if  $pos == "after" {
+		&:after {
+			content:"";
+			position:absolute;
+			width:100%;
+			height:$height;
+			bottom:-($height / 2);
+			left:0;
+			background:url($url) 0 0 repeat-x;
+			z-index:10;
+		}
+	} @else {
+		&:before {
+			content:"";
+			position:absolute;
+			width:100%;
+			height:$height;
+			top:-($height / 2);
+			left:0;
+			background:url($url) 0 0 repeat-x;
+			z-index:10;
+		}
+	}
+}
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}

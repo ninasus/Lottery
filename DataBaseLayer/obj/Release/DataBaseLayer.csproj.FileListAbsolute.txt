@@ -1,0 +1,10 @@
+d:\_Loto\Lottery\DataBaseLayer\bin\Release\DataBaseLayer.dll.config
+d:\_Loto\Lottery\DataBaseLayer\bin\Release\DataBaseLayer.dll
+d:\_Loto\Lottery\DataBaseLayer\bin\Release\DataBaseLayer.pdb
+d:\_Loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.dll
+d:\_Loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.SqlServer.dll
+d:\_Loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.xml
+d:\_Loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.SqlServer.xml
+d:\_Loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.csprojResolveAssemblyReference.cache
+d:\_Loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.dll
+d:\_Loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.pdb

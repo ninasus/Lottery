@@ -18,3 +18,13 @@ c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.
 c:\WorkSpace\Projects\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache
 c:\WorkSpace\Projects\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.dll
 c:\WorkSpace\Projects\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.pdb
+d:\_Loto\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.dll.config
+d:\_Loto\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.dll
+d:\_Loto\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.pdb
+d:\_Loto\Lottery\DataBaseLayer\bin\Debug\EntityFramework.dll
+d:\_Loto\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.dll
+d:\_Loto\Lottery\DataBaseLayer\bin\Debug\EntityFramework.xml
+d:\_Loto\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.xml
+d:\_Loto\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache
+d:\_Loto\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.dll
+d:\_Loto\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.pdb
