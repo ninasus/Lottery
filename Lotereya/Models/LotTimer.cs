@@ -11,16 +11,15 @@ namespace Lotereya.Models
     public class LotTimer
     {
         private static LotTimer instance;
-        private Timer timerStartEvent;
-        private Timer timerStartBeforeEvent;
-        private Timer timerStartAfterEvent;
-        private Timer timer;
+        private CustomTimer timerStartEvent;
+        private CustomTimer timerStartBeforeEvent;
+        private CustomTimer timerStartAfterEvent;
+        private CustomTimer timer;
         private static bool isStoped;
         public int PeriodAfterEvent;
         public int PeriodEvent;
         public int PeriodBeforeEvent;
         private int Tick;
-
 
 
         protected LotTimer()
@@ -48,10 +47,15 @@ namespace Lotereya.Models
             if (isStoped)
             {
                 isStoped = false;
-                timerStartBeforeEvent = new Timer(Loter, new DataStructure() { Type = 1, Period = PeriodBeforeEvent }, 1, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent);
-                timerStartEvent = new Timer(Loter, new DataStructure() { Type = 2, Period = PeriodEvent }, PeriodBeforeEvent, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent);
-                timerStartAfterEvent = new Timer(Loter, new DataStructure() { Type = 3, Period = PeriodAfterEvent }, PeriodEvent + PeriodBeforeEvent+1, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent);
+                timerStartBeforeEvent = new CustomTimer(Loter, new DataStructure() { Type = 1, Period = PeriodBeforeEvent }, 1, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent, null);
+                timerStartEvent = new CustomTimer(Loter, new DataStructure() { Type = 2, Period = PeriodEvent }, PeriodBeforeEvent, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent, timerStartEvent_onDispose);
+                timerStartAfterEvent = new CustomTimer(Loter, new DataStructure() { Type = 3, Period = PeriodAfterEvent }, PeriodEvent + PeriodBeforeEvent + 1, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent, null);
             }
+        }
+
+        private void timerStartEvent_onDispose()
+        {
+            Lotereya.Hubs.Timing.EndPlay();
         }
 
         private void Loter(object state)
@@ -60,13 +64,15 @@ namespace Lotereya.Models
 
             Tick = data.Period;
 
-            if(timer!=null)
+            if (timer != null)
             {
                 timer.Dispose();
                 timer = null;
+                if (data.Type == 3)
+                    timerStartEvent.FireDisposeEvent();
             }
 
-            timer = new Timer(Sender, data.Type, 0, 1000);
+            timer = new CustomTimer(Sender, state, 0, 1000, null);
             //var context = GlobalHost.ConnectionManager.GetHubContext<Lotereya.Hubs.Timing>();
             //context.Clients.All.addMessage("Начался розыграш");
         }
@@ -78,15 +84,14 @@ namespace Lotereya.Models
             int hours = Tick / 3600000;
             int minutes = (Tick - hours * 3600000) / 60000;
             int second = (Tick - hours * 3600000 - minutes * 60000) / 1000;
-            context.Clients.All.addMessage(Helper.GetMessage((int)state), Helper.Converter(hours) + ":" + Helper.Converter(minutes) + ":" + Helper.Converter(second));
+            context.Clients.All.addMessage(Helper.GetMessage(((DataStructure)state).Type), Helper.Converter(hours) + ":" + Helper.Converter(minutes) + ":" + Helper.Converter(second));
 
-            
             if (Tick <= 0)
             {
-
                 timer.Dispose();
                 timer = null;
-
+                if (((DataStructure)state).Type == 2)
+                    timerStartEvent.FireDisposeEvent();
             }
         }
 

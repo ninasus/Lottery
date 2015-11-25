@@ -27,32 +27,30 @@
     <!--SignalR script to update the chat page and send messages.-->
     <script>
     $(function () {
-        // Reference the auto-generated proxy for the hub.
-        /*var chat = $.connection.timing;
-
+        var chat = $.connection.timing;
 
         chat.client.addMessage = function (type, tick) {
-            $('#discussion').empty().append('<li><strong>' + htmlEncode(type)
-               + '</strong>: ' + htmlEncode(tick) + '</li>');
+            $('.time_to_draw').empty().append('<strong>До начала розыгрыша осталось </strong>: ' + htmlEncode(tick));
         }
 
-        chat.client.SendCount = function(count){
-            $('.count').empty().append("Сейчас играет "+count);
+        chat.client.SendCount = function (count) {
+            $('.now_play').empty().append("Сейчас играет " + count);
         }
-
-        $('#message').focus();
 
         $.connection.hub.start().done(function () {
             //chat.server.timer();
 
-            $('#sendmessage').click(function () {
+            chat.server.getCount();
+
+            /*$('#sendmessage').click(function () {
                 // Call the Send method on the hub.
                 chat.server.send($('#displayname').val(), $('#message').val());
                 // Clear text box and reset focus for next comment.
                 $('#message').val('').focus();
-            });
-        });*/
+            });*/
+        });
 
+        /*****************************************/
         var request = function(url, params){
             var result = $.ajax({
                 url:url,
@@ -130,7 +128,9 @@
         });
 
         $("#play").click(function(){
-            $("#field").load("/Home/GamePartial");
+            $("#field").load("/Home/GamePartial", function(){
+                chat.server.beginPlay();
+            });
         });
 
         $("#autoSelect").click(function(){

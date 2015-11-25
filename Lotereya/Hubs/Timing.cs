@@ -10,22 +10,35 @@ namespace Lotereya.Hubs
     public class Timing : Hub
     {
         static bool isTimerRun;
+        private static IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<Timing>();
 
         public static int Count { get; private set; }
 
-        public override System.Threading.Tasks.Task OnConnected()
+        public void BeginPlay()
+        {
+            Count++;
+            Clients.All.SendCount(Count);
+        }
+
+        public static void EndPlay()
+        {
+            Count=0;
+            hubContext.Clients.All.SendCount(Count);
+        }
+
+        /* public override System.Threading.Tasks.Task OnConnected()
         {
             Count++;
             Clients.All.SendCount(Count);
             return base.OnConnected();
-        }
+        }*/
 
-        public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
+        /*public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
         {
             Count--;
             Clients.All.SendCount(Count);
             return base.OnDisconnected(stopCalled);
-        }
+        }*/
 
         static Timing()
         {
@@ -38,19 +51,9 @@ namespace Lotereya.Hubs
             Clients.All.addNewMessageToPage(name, message);
         }
 
-        /*public void Timer()
+        public void GetCount()
         {
-            if (!isTimerRun)
-            {
-                isTimerRun = true;
-                int i = 0;
-                while (true)
-                {
-                    Thread.Sleep(5000);
-                    Clients.All.addNewMessageToPage("TIMER", "Tic-tac " + i);
-                    i++;
-                }
-            }
-        }*/
+            Clients.Caller.SendCount(Count);
+        }             
     }
 }
