@@ -8,3 +8,13 @@ C:\WorkSpace\Projects\Lotereya\DataBaseLayer\bin\Debug\EntityFramework.SqlServer
 C:\WorkSpace\Projects\Lotereya\DataBaseLayer\obj\Debug\DataBaseLayer.dll
 C:\WorkSpace\Projects\Lotereya\DataBaseLayer\obj\Debug\DataBaseLayer.pdb
 c:\WorkSpace\Projects\Lotereya\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.dll.config
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.dll
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.pdb
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\EntityFramework.dll
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.dll
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\EntityFramework.xml
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.xml
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.dll
+c:\WorkSpace\Projects\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.pdb

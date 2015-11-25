@@ -26,140 +26,143 @@
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
     <script>
-    $(function () {
-        var chat = $.connection.timing;
+        $(function () {
+            var chat = $.connection.timing;
 
-        chat.client.addMessage = function (type, tick) {
-            $('.time_to_draw').empty().append('<strong>До начала розыгрыша осталось </strong>: ' + htmlEncode(tick));
-        }
+            chat.client.addMessage = function (type, tick) {
+                $('.time_to_draw').empty().append('<strong>До начала розыгрыша осталось </strong>: ' + htmlEncode(tick));
+            }
 
-        chat.client.SendCount = function (count) {
-            $('.now_play').empty().append("Сейчас играет " + count);
-        }
+            chat.client.SendCount = function (count) {
+                $('.now_play').empty().append("Сейчас играет " + count);
+            }
 
-        chat.client.endDraw = function (){
-            location.reload();
-        }
+            chat.client.endDraw = function (){
+                location.reload();
+            }
 
-        chat.client.startDraw = function (){
-            location.reload();
-        }
+            chat.client.startDraw = function (){
+                location.reload();
+            }
 
-        $.connection.hub.start().done(function () {
-            //chat.server.timer();
+            $.connection.hub.start().done(function () {
+                //chat.server.timer();
 
-            chat.server.getCount();
+                chat.server.getCount();
 
-            /*$('#sendmessage').click(function () {
-                // Call the Send method on the hub.
-                chat.server.send($('#displayname').val(), $('#message').val());
-                // Clear text box and reset focus for next comment.
-                $('#message').val('').focus();
-            });*/
-        });
-
-        /*****************************************/
-        var request = function(url, params){
-            var result = $.ajax({
-                url:url,
-                contentType: "application/json; charset=utf-8",
-                data: params,
-                type: "GET",
-                async: false,
-                success: function(json){
-                    return json;
-                }
+                /*$('#sendmessage').click(function () {
+                    // Call the Send method on the hub.
+                    chat.server.send($('#displayname').val(), $('#message').val());
+                    // Clear text box and reset focus for next comment.
+                    $('#message').val('').focus();
+                });*/
             });
 
-            return result.responseJSON;
-        };
+            /*****************************************/
+            var request = function(url, params){
+                var result = $.ajax({
+                    url:url,
+                    contentType: "application/json; charset=utf-8",
+                    data: params,
+                    type: "GET",
+                    async: false,
+                    success: function(json){
+                        return json;
+                    }
+                });
 
-        var cellNumber = 0;
-        var selectedElements = [];
+                return result.responseJSON;
+            };
 
-        $(".element").click(function () {
-            if ($(this).hasClass("selectedElement")) {
-                $(this).removeClass("selectedElement");
-                $("#play").attr("disabled","disabled");
+            var cellNumber = 0;
+            var selectedElements = [];
+
+            $(".element").click(function () {
+                if ($(this).hasClass("selectedElement")) {
+                    $(this).removeClass("selectedElement");
+                    $("#play").attr("disabled","disabled");
 
 
-                var data = { element: $(this).text() };
-                var result = request("/Home/RemoveElement",data);
-                if (result)
-                {
-                    cellNumber = cellNumber - 1;
-                    var valRemove = $(this).text();
-
-                    selectedElements = $.grep(selectedElements,function(value){
-                        return value!=valRemove;
-                    });
-
-                    $("#selectedElements div").each(function(index,value){
-                        if($(value).text().trim()==valRemove.trim())
-                        {
-                            $(value).remove();
-                            $("#selectedElements").append("<div class='elementSel'></div>");
-                            return;
-                        }
-                    });
-                }
-
-            } else {
-                if(cellNumber<(@Model.countValue))
-                {
-                    var data = { element: $(this).text(), number: cellNumber, count: @Model.countValue };
-                    var result = request("/Home/AddElement",data);
+                    var data = { element: $(this).text() };
+                    var result = request("/Home/RemoveElement",data);
                     if (result)
                     {
-                        $(this).addClass("selectedElement");
-                        selectedElements[cellNumber] = $(this).text();
-                        cellNumber = cellNumber + 1;
-                        $("#selectedElements").find("div:nth-child("+(cellNumber+1)+")").text($(this).text());
-                        if(cellNumber==(@Model.countValue))
-                            $("#play").removeAttr("disabled");
+                        cellNumber = cellNumber - 1;
+                        var valRemove = $(this).text();
+
+                        selectedElements = $.grep(selectedElements,function(value){
+                            return value!=valRemove;
+                        });
+
+                        $("#selectedElements div").each(function(index,value){
+                            if($(value).text().trim()==valRemove.trim())
+                            {
+                                $(value).remove();
+                                $("#selectedElements").append("<div class='elementSel'></div>");
+                                return;
+                            }
+                        });
                     }
 
+                } else {
+                    if(cellNumber<(@Model.countValue))
+                    {
+                        var data = { element: $(this).text(), number: cellNumber, count: @Model.countValue };
+                        var result = request("/Home/AddElement",data);
+                        if (result)
+                        {
+                            $(this).addClass("selectedElement");
+                            selectedElements[cellNumber] = $(this).text();
+                            cellNumber = cellNumber + 1;
+                            $("#selectedElements").find("div:nth-child("+(cellNumber+1)+")").text($(this).text());
+
+                            if((cellNumber==(@Model.countValue))&&((@Lotereya.Models.LotTimer.IsStoped())==false))
+                                $("#play").removeAttr("disabled");
+                        }
+
+                    }
                 }
-            }
-        });
+            });
 
 
-        $("#reset").click(function(){
-            var result = request("/Home/ClearElement",{});
-            if (result)
-            {
-                $("#selectedElements div").text("");
-                $(".element").removeClass("selectedElement");
-                $("#play").attr("disabled","disabled");
+            $("#reset").click(function(){
+                var result = request("/Home/ClearElement",{});
+                if (result)
+                {
+                    $("#selectedElements div").text("");
+                    $(".element").removeClass("selectedElement");
+                    $("#play").attr("disabled","disabled");
+                    cellNumber = 0;
+                }
+            });
+
+            $("#play").click(function(){
+                $("#field").load("/Home/GamePartial", function(){
+                    chat.server.beginPlay();
+                });
+            });
+
+            $("#autoSelect").click(function(){
+                var data = { min: @Model.minValue, max:@Model.maxValue, count: @Model.countValue };
+                var result = request("/Home/AutoElements",data);
                 cellNumber = 0;
-            }
-        });
+                $(result).each(function(index,value){
+                    selectedElements[cellNumber] = result[cellNumber];
 
-        $("#play").click(function(){
-            $("#field").load("/Home/GamePartial", function(){
-                chat.server.beginPlay();
+                    $("#selectedElements").find("div:nth-child("+(cellNumber+2)+")").text(result[cellNumber]);
+                    $(".element[data-id="+result[cellNumber]+"]").addClass("selectedElement");
+
+                    cellNumber = cellNumber + 1;
+                });
+
+                if((cellNumber==(@Model.countValue))&&(@Convert.ToInt32(Lotereya.Models.LotTimer.IsStoped())==false))
+                    $("#play").removeAttr("disabled");
             });
         });
-
-        $("#autoSelect").click(function(){
-            var data = { min: @Model.minValue, max:@Model.maxValue, count: @Model.countValue };
-            var result = request("/Home/AutoElements",data);
-            cellNumber = 0;
-            $(result).each(function(index,value){
-                selectedElements[cellNumber] = result[cellNumber];
-                
-                $("#selectedElements").find("div:nth-child("+(cellNumber+2)+")").text(result[cellNumber]);
-                $(".element[data-id="+result[cellNumber]+"]").addClass("selectedElement");
-
-                cellNumber = cellNumber + 1;
-            });
-            $("#play").removeAttr("disabled");
-        });
-    });
-    // This optional function html-encodes messages for display in the page.
-    function htmlEncode(value) {
-        var encodedValue = $('<div />').text(value).html();
-        return encodedValue;
-    }
+        // This optional function html-encodes messages for display in the page.
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
     </script>
 }

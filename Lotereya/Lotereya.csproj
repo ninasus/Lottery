@@ -148,6 +148,7 @@
     </Compile>
     <Compile Include="Hubs\Timing.cs" />
     <Compile Include="Models\CustomTimer.cs" />
+    <Compile Include="Models\Draw.cs" />
     <Compile Include="Models\ErrorCatcher.cs" />
     <Compile Include="Models\LotTimer.cs" />
     <Compile Include="Models\settings.cs" />
