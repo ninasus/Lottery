@@ -37,6 +37,14 @@
             $('.now_play').empty().append("Сейчас играет " + count);
         }
 
+        chat.client.endDraw = function (){
+            location.reload();
+        }
+
+        chat.client.startDraw = function (){
+            location.reload();
+        }
+
         $.connection.hub.start().done(function () {
             //chat.server.timer();
 

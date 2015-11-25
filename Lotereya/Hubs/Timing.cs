@@ -9,7 +9,7 @@ namespace Lotereya.Hubs
 {
     public class Timing : Hub
     {
-        static bool isTimerRun;
+     
         private static IHubContext hubContext = GlobalHost.ConnectionManager.GetHubContext<Timing>();
 
         public static int Count { get; private set; }
@@ -42,7 +42,6 @@ namespace Lotereya.Hubs
 
         static Timing()
         {
-            isTimerRun = false;
             Count = 0;
         }
         public void Send(string name, string message)

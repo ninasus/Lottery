@@ -46,6 +46,10 @@ namespace Lotereya.Models
         {
             if (isStoped)
             {
+                var context = GlobalHost.ConnectionManager.GetHubContext<Lotereya.Hubs.Timing>();
+                context.Clients.All.startDraw();
+                Lotereya.Hubs.Timing.EndPlay();
+
                 isStoped = false;
                 timerStartBeforeEvent = new CustomTimer(Loter, new DataStructure() { Type = 1, Period = PeriodBeforeEvent }, 1, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent, null);
                 timerStartEvent = new CustomTimer(Loter, new DataStructure() { Type = 2, Period = PeriodEvent }, PeriodBeforeEvent, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent, timerStartEvent_onDispose);
@@ -122,6 +126,9 @@ namespace Lotereya.Models
                 timer.Dispose();
                 timer = null;
             }
+
+            var context = GlobalHost.ConnectionManager.GetHubContext<Lotereya.Hubs.Timing>();
+            context.Clients.All.endDraw();
         }
     }
 
