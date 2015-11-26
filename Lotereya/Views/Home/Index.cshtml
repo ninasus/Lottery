@@ -126,7 +126,8 @@
                             cellNumber = cellNumber + 1;
                             $("#selectedElements").find("span:nth-child("+(cellNumber)+")").text($(this).text());
 
-                            if((cellNumber==(@Model.countValue))&&((@Lotereya.Models.LotTimer.IsStoped())==false))
+                           
+                            if((cellNumber==(@Model.countValue))&&(@Convert.ToInt32(Lotereya.Models.LotTimer.IsStoped())==false))
                                 $("#play").removeAttr("disabled");
                         }
 
@@ -164,6 +165,7 @@
                 var data = { min: @Model.minValue, max: @Model.maxValue, count: @Model.countValue };
                 var result = request("/Home/AutoElements",data);
                 cellNumber = 0;
+                $(".selectedElement").removeClass("selectedElement");
                 $(result).each(function(index,value){
                     selectedElements[cellNumber] = result[cellNumber];
 
