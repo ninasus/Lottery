@@ -149,7 +149,7 @@
 
             $("#play").click(function(){
                 $("#field").load("/Home/GamePartial", function(){
-                    chat.server.beginPlay();
+                    chat.server.beginPlay(selectedElements);
                 });
             });
 

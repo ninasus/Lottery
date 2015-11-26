@@ -68,7 +68,9 @@ namespace Lotereya.Controllers
 
         public JsonResult AutoElements(int min, int max, int count)
         {
-            int[] array = new int[count];
+            int[] array = Lotereya.Models.GenerateRandomValues.Get(count, min, max);
+                
+            /*    new int[count];
 
             int i = 0;
 
@@ -85,7 +87,7 @@ namespace Lotereya.Controllers
 
                 if (i == count)
                     break;
-            }
+            }*/
 
             Session["elements"] = array;
 

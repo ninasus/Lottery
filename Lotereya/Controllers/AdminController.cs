@@ -49,6 +49,9 @@ namespace Lotereya.Controllers
                 lotter.PeriodAfterEvent = sets.timeAfterDraw * 1000;
                 lotter.PeriodBeforeEvent = sets.timeBeforeDraw * 1000;
                 lotter.PeriodEvent = sets.timeDraw * 1000;
+                lotter.Count = sets.countValue;
+                lotter.minValue = sets.minValue;
+                lotter.maxValue = sets.maxValue;
                 lotter.Start();
             }
             else

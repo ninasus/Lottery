@@ -5,6 +5,8 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using System.Threading;
 
+using Lotereya.Models;
+
 namespace Lotereya.Hubs
 {
     public class Timing : Hub
@@ -14,16 +16,56 @@ namespace Lotereya.Hubs
 
         public static int Count { get; private set; }
 
-        public void BeginPlay()
+        public void BeginPlay(int[] array)
         {
             Count++;
+
+            Draw draw = Draw.Instance();
+
+            string removableConnection = draw.Winners.FirstOrDefault(item => item == Context.ConnectionId);
+            if(removableConnection!=null)
+            {
+                draw.Winners.Remove(removableConnection);
+            }
+
+            bool IsWrong = false;
+            foreach(int i in draw.PriceElements)
+            {
+                if(!array.Any(item=>item==i))
+                {
+                    IsWrong = true;
+                    break;
+                }
+            }
+
+            if(!IsWrong)
+            {
+                draw.Winners.Add(Context.ConnectionId);
+            }
+
             Clients.All.SendCount(Count);
         }
 
-        public static void EndPlay()
+        public static void EndPlay(string[] winners, int[] priceElement)
         {
             Count=0;
             hubContext.Clients.All.SendCount(Count);
+
+            if(priceElement!=null)
+            {
+                if(winners!=null)
+                {
+                    if(winners.Count()>0)
+                    {
+                        hubContext.Clients.AllExcept(winners).drawResult(1, 0, priceElement);
+                        hubContext.Clients.Clients(winners).drawResult(1, 1, priceElement);
+                    }
+                    else
+                    {
+                        hubContext.Clients.All.drawResult(0, 0, priceElement);
+                    }
+                }
+            }
         }
 
         /* public override System.Threading.Tasks.Task OnConnected()
@@ -53,6 +95,11 @@ namespace Lotereya.Hubs
         public void GetCount()
         {
             Clients.Caller.SendCount(Count);
-        }             
+        }     
+        
+        public static void SendCount()
+        {
+            hubContext.Clients.All.SendCount(Count);
+        }
     }
 }
