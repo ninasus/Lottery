@@ -1,0 +1,12 @@
+* text=auto
+
+*.cs text
+*.cshtml text
+*.js text
+*.css text
+*.scss text
+*.svg text
+
+*.cs diff=csharp
+
+*.sln text eol=crlf

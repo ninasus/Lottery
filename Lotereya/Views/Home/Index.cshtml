@@ -115,7 +115,7 @@
                     }
 
                 } else {
-                    if(cellNumber<(@Model.countValue))
+                    if (cellNumber < (@Model.countValue))
                     {
                         var data = { element: $(this).text(), number: cellNumber, count: @Model.countValue };
                         var result = request("/Home/AddElement",data);
@@ -124,7 +124,7 @@
                             $(this).addClass("selectedElement");
                             selectedElements[cellNumber] = $(this).text();
                             cellNumber = cellNumber + 1;
-                            $("#selectedElements").find("span:nth-child("+(cellNumber+1)+")").text($(this).text());
+                            $("#selectedElements").find("span:nth-child("+(cellNumber)+")").text($(this).text());
 
                             if((cellNumber==(@Model.countValue))&&((@Lotereya.Models.LotTimer.IsStoped())==false))
                                 $("#play").removeAttr("disabled");
@@ -135,7 +135,7 @@
             });
 
 
-            $("#reset").click(function(){
+            $("#reset").click(function() {
                 var result = request("/Home/ClearElement",{});
                 if (result)
                 {
@@ -153,7 +153,15 @@
             });
 
             $("#autoSelect").click(function(){
-                var data = { min: @Model.minValue, max:@Model.maxValue, count: @Model.countValue };
+                //var result = request("/Home/ClearElement",{});
+                //if (result)
+                //{
+                //    $("#selectedElements span").text("");
+                //    $(".element").removeClass("selectedElement");
+                //    $("#play").attr("disabled","disabled");
+                //    cellNumber = 0;
+                //}
+                var data = { min: @Model.minValue, max: @Model.maxValue, count: @Model.countValue };
                 var result = request("/Home/AutoElements",data);
                 cellNumber = 0;
                 $(result).each(function(index,value){

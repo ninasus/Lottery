@@ -237,7 +237,7 @@ body {
       color: #626262;
       padding: 7px 0 0 0;
       cursor: pointer; }
-      #game .play_field .grid > div:hover {
+      #game .play_field .grid > div:hover, #game .play_field .grid > div.selectedElement {
         color: #fff;
         background: #2d4d86;
         border: 1px solid #264377; }

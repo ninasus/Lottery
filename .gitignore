@@ -1,0 +1,9 @@
+bin/
+obj/
+Import Schema Logs/
+*.dbmdl
+*.suo
+*.opensdf
+*.sdf
+*.suo
+*.user

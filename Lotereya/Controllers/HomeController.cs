@@ -24,7 +24,7 @@ namespace Lotereya.Controllers
         public JsonResult AddElement(int element, int number, int count)
         {
             int[] array;
-            if(Session["elements"]!=null)
+            if (Session["elements"] != null)
             {
                 array = (int[])Session["elements"];
                 array[number] = element;
@@ -47,7 +47,7 @@ namespace Lotereya.Controllers
             {
                 array = (int[])Session["elements"];
                 var newArray = array.Where(item => item != element).ToList();
-                for(int i=0;i<array.Length;i++)
+                for (int i = 0; i < array.Length; i++)
                 {
                     if (i < newArray.Count)
                         array[i] = newArray[i];
@@ -74,10 +74,10 @@ namespace Lotereya.Controllers
 
             Random rnd = new Random();
 
-            while(true)
+            while (true)
             {
-                int element = rnd.Next(min, max);
-                if(!array.Any(item=>item==element))
+                int element = rnd.Next(min, max + 1);
+                if (!array.Any(item => item == element))
                 {
                     array[i] = element;
                     i++;
