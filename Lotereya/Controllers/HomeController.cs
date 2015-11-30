@@ -21,6 +21,19 @@ namespace Lotereya.Controllers
             return PartialView();
         }
 
+        public ActionResult ResultPartial(bool thereWinners, bool isWinner)
+        {
+            if (!thereWinners)
+                ViewData["resultText"] = "Никто не выиграл джэкпот";
+            else
+                if (!isWinner)
+                    ViewData["resultText"] = "В этом розыграше был выигран джэкпот";
+                else
+                    ViewData["resultText"] = "Поздравляем! Вы выиграли джэкпот";
+
+            return PartialView();
+        }
+
         public JsonResult AddElement(int element, int number, int count)
         {
             int[] array;
@@ -69,7 +82,7 @@ namespace Lotereya.Controllers
         public JsonResult AutoElements(int min, int max, int count)
         {
             int[] array = Lotereya.Models.GenerateRandomValues.Get(count, min, max);
-                
+
             /*    new int[count];
 
             int i = 0;

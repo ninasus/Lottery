@@ -39,8 +39,12 @@
         $(function () {
             var chat = $.connection.timing;
 
-            chat.client.addMessage = function (type, tick) {
+            chat.client.secondIs = function (tick) {
                 $('.time_to_draw').empty().append(htmlEncode(tick));
+
+                var element = $('.clock');
+                if(element.length>0)
+                    $('.clock').empty().append(htmlEncode(tick));
             }
 
             chat.client.SendCount = function (count) {
@@ -53,6 +57,14 @@
 
             chat.client.startDraw = function (){
                 location.reload();
+            }
+
+            chat.client.drawResult=function(thereWinners,isWinner,priceElements)
+            {
+                var elements=$("#priceElements .elementSel");
+                $(priceElements).each(function(index,value){
+                    $(elements[index]).text(value);
+                });
             }
 
             $.connection.hub.start().done(function () {
@@ -150,6 +162,8 @@
             $("#play").click(function(){
                 $("#field").load("/Home/GamePartial", function(){
                     chat.server.beginPlay(selectedElements);
+
+                    
                 });
             });
 

@@ -47,3 +47,13 @@ E:\Projects\Lottereya\Lottery\DataBaseLayer\bin\Debug\EntityFramework.xml
 E:\Projects\Lottereya\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.xml
 E:\Projects\Lottereya\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.dll
 E:\Projects\Lottereya\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.pdb
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.dll.config
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.dll
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\DataBaseLayer.pdb
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\EntityFramework.dll
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.dll
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\EntityFramework.xml
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.xml
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.dll
+c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.pdb

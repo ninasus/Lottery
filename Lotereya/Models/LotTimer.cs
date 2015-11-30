@@ -113,15 +113,19 @@ namespace Lotereya.Models
         {
             Tick -= 1000;
             var context = GlobalHost.ConnectionManager.GetHubContext<Lotereya.Hubs.Timing>();
-            int hours = Tick / 3600000;
+            /*int hours = Tick / 3600000;
             int minutes = (Tick - hours * 3600000) / 60000;
-            int second = (Tick - hours * 3600000 - minutes * 60000) / 1000;
-            context.Clients.All.addMessage(Helper.GetMessage(((DataStructure)state).Type), Helper.Converter(hours) + ":" + Helper.Converter(minutes) + ":" + Helper.Converter(second));
+            int second = (Tick - hours * 3600000 - minutes * 60000) / 1000;*/
+            //context.Clients.All.addMessage(Helper.GetMessage(((DataStructure)state).Type), Helper.Converter(hours) + ":" + Helper.Converter(minutes) + ":" + Helper.Converter(second));
+            context.Clients.All.secondIs(Tick/1000);
 
             if (Tick <= 0)
             {
-                timer.Dispose();
-                timer = null;
+                if (timer != null)
+                {
+                    timer.Dispose();
+                    timer = null;
+                }
                 if (((DataStructure)state).Type == 2)
                     timerStartEvent.FireDisposeEvent();
             }
