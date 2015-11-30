@@ -12,6 +12,8 @@ namespace DataBaseLayer
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class LoterejaEntities : DbContext
     {
@@ -26,5 +28,20 @@ namespace DataBaseLayer
         }
     
         public virtual DbSet<setting> settings { get; set; }
+        public virtual DbSet<drawing> drawings { get; set; }
+        public virtual DbSet<winner> winners { get; set; }
+    
+        public virtual ObjectResult<create_draw_Result> create_draw(Nullable<int> default_JackPot, Nullable<int> stepJackPot)
+        {
+            var default_JackPotParameter = default_JackPot.HasValue ?
+                new ObjectParameter("default_JackPot", default_JackPot) :
+                new ObjectParameter("default_JackPot", typeof(int));
+    
+            var stepJackPotParameter = stepJackPot.HasValue ?
+                new ObjectParameter("stepJackPot", stepJackPot) :
+                new ObjectParameter("stepJackPot", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<create_draw_Result>("create_draw", default_JackPotParameter, stepJackPotParameter);
+        }
     }
 }

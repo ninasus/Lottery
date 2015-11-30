@@ -1,0 +1,46 @@
+﻿@model Lotereya.Models.Winner
+
+@if (ViewData["resultText"] != null)
+{
+    <div class="result">
+        @ViewData["resultText"]
+    </div>
+}
+
+@if ((ViewData["result"] != null) && ((int)ViewData["result"] == 1))
+{
+    using(Html.BeginForm("Winner","Home"))
+    {
+        <div class="price-form">
+            @Html.HiddenFor(model=>model.id_draw)
+            
+            
+
+            <span>Поздравляем Вы выиграли джекпот</span>
+            <span>Заполните форму чтобы получить приз</span>
+            <div>
+                <span>Ваше Ф.И.О.</span>
+               @Html.EditorFor(model=>model.name)
+               @Html.ValidationMessageFor(model => model.name)
+            </div>
+            <div>
+                <span>Ваш e-mail</span>
+                @Html.EditorFor(model => model.email)
+                @Html.ValidationMessageFor(model => model.email)
+            </div>
+            <div>
+                <span>Ваш телефон</span>
+                @Html.EditorFor(model => model.phone)
+                @Html.ValidationMessageFor(model => model.phone)
+            </div>
+
+            <div>
+                <input type="submit" value="Отправить" />
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="play-new">Нажмите тут, чтобы играть снова!</div>
+}

@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LoterejaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LoterejaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="drawing">
+          <Key>
+            <PropertyRef Name="id_draw" />
+          </Key>
+          <Property Name="id_draw" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="result" Type="varchar" MaxLength="500" />
+          <Property Name="count_winner" Type="int" />
+          <Property Name="JackPot" Type="int" Nullable="false" />
+          <Property Name="date" Type="smalldatetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="settings">
           <Key>
             <PropertyRef Name="id_settings" />
@@ -20,11 +30,28 @@
           <Property Name="countValue" Type="int" Nullable="false" />
           <Property Name="date" Type="smalldatetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="winners">
+          <Key>
+            <PropertyRef Name="id_winner" />
+          </Key>
+          <Property Name="id_winner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="elements" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ip" Type="varchar" MaxLength="20" />
+          <Property Name="date" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <Function Name="create_draw" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="default_JackPot" Type="int" Mode="In" />
+          <Parameter Name="stepJackPot" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="LoterejaModelStoreContainer">
+          <EntitySet Name="drawing" EntityType="Self.drawing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="winners" EntityType="Self.winners" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LoterejaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -45,7 +72,39 @@
         </EntityType>
         <EntityContainer Name="LoterejaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="settings" EntityType="Self.setting" />
+          <FunctionImport Name="create_draw" ReturnType="Collection(LoterejaModel.create_draw_Result)">
+            <Parameter Name="default_JackPot" Mode="In" Type="Int32" />
+            <Parameter Name="stepJackPot" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="drawings" EntityType="LoterejaModel.drawing" />
+          <EntitySet Name="winners" EntityType="LoterejaModel.winner" />
         </EntityContainer>
+        <EntityType Name="drawing">
+          <Key>
+            <PropertyRef Name="id_draw" />
+          </Key>
+          <Property Name="id_draw" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="result" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="count_winner" Type="Int32" />
+          <Property Name="JackPot" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <ComplexType Name="create_draw_Result">
+          <Property Type="Decimal" Name="id_draw" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="Int32" Name="JackPot" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="winner">
+          <Key>
+            <PropertyRef Name="id_winner" />
+          </Key>
+          <Property Name="id_winner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="elements" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -65,6 +124,38 @@
                 <ScalarProperty Name="stepJackPot" ColumnName="stepJackPot" />
                 <ScalarProperty Name="countValue" ColumnName="countValue" />
                 <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="create_draw" FunctionName="LoterejaModel.Store.create_draw" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LoterejaModel.create_draw_Result">
+                <ScalarProperty Name="id_draw" ColumnName="id_draw" />
+                <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="drawings">
+            <EntityTypeMapping TypeName="LoterejaModel.drawing">
+              <MappingFragment StoreEntitySet="drawing">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+                <ScalarProperty Name="count_winner" ColumnName="count_winner" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="id_draw" ColumnName="id_draw" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="winners">
+            <EntityTypeMapping TypeName="LoterejaModel.winner">
+              <MappingFragment StoreEntitySet="winners">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="elements" ColumnName="elements" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id_winner" ColumnName="id_winner" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

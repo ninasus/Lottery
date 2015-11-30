@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="LoterejaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="LoterejaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="drawing">
+    <Key>
+      <PropertyRef Name="id_draw" />
+    </Key>
+    <Property Name="id_draw" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="result" Type="varchar" MaxLength="500" />
+    <Property Name="count_winner" Type="int" />
+    <Property Name="JackPot" Type="int" Nullable="false" />
+    <Property Name="date" Type="smalldatetime" Nullable="false" />
+  </EntityType>
   <EntityType Name="settings">
     <Key>
       <PropertyRef Name="id_settings" />
@@ -15,7 +25,25 @@
     <Property Name="countValue" Type="int" Nullable="false" />
     <Property Name="date" Type="smalldatetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="winners">
+    <Key>
+      <PropertyRef Name="id_winner" />
+    </Key>
+    <Property Name="id_winner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="400" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="elements" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ip" Type="varchar" MaxLength="20" />
+    <Property Name="date" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <Function Name="create_draw" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="default_JackPot" Type="int" Mode="In" />
+    <Parameter Name="stepJackPot" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="LoterejaModelStoreContainer">
+    <EntitySet Name="drawing" EntityType="Self.drawing" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="winners" EntityType="Self.winners" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

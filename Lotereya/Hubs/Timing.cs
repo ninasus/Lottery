@@ -50,6 +50,7 @@ namespace Lotereya.Hubs
         {
             Count=0;
             hubContext.Clients.All.SendCount(Count);
+            Draw draw = Draw.Instance();
 
             if(priceElement!=null)
             {
@@ -57,15 +58,27 @@ namespace Lotereya.Hubs
                 {
                     if(winners.Count()>0)
                     {
-                        hubContext.Clients.AllExcept(winners).drawResult(1, 0, priceElement);
-                        hubContext.Clients.Clients(winners).drawResult(1, 1, priceElement);
+                        hubContext.Clients.AllExcept(winners).drawResult(1, 0, priceElement, draw.id_draw);
+                        hubContext.Clients.Clients(winners).drawResult(1, 1, priceElement, draw.id_draw);
                     }
                     else
                     {
-                        hubContext.Clients.All.drawResult(0, 0, priceElement);
+                        hubContext.Clients.All.drawResult(0, 0, priceElement, draw.id_draw);
                     }
                 }
             }
+        }
+
+        public static void sendJackPot()
+        {
+            Draw draw = Draw.Instance();
+            hubContext.Clients.All.SendJackPot(draw.JackPot);
+        }
+
+        public void getJackPot()
+        {
+            Draw draw = Draw.Instance();
+            Clients.All.SendJackPot(draw.JackPot);
         }
 
         /* public override System.Threading.Tasks.Task OnConnected()

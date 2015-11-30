@@ -39,32 +39,72 @@
         $(function () {
             var chat = $.connection.timing;
 
-            chat.client.secondIs = function (tick) {
-                $('.time_to_draw').empty().append(htmlEncode(tick));
-
+            chat.client.secondIs = function (type,tick) {
                 var element = $('.clock');
-                if(element.length>0)
-                    $('.clock').empty().append(htmlEncode(tick));
+
+                if(type==1)
+                {
+                    $('.time_to_draw').empty().append(htmlEncode(tick));
+
+                    if(element.length>0)
+                        $('.clock').empty().append(htmlEncode(tick));
+                }
+                else
+                {
+                    if(element.length>0)
+                        $('.clock').empty().append(htmlEncode("Идет обработка данных"));
+                }
             }
 
             chat.client.SendCount = function (count) {
                 $('.now_play').empty().append(count);
             }
-
+                       
             chat.client.endDraw = function (){
                 location.reload();
             }
 
             chat.client.startDraw = function (){
                 location.reload();
+                $('.sum').empty().append(" $");
             }
 
-            chat.client.drawResult=function(thereWinners,isWinner,priceElements)
+            chat.client.SendJackPot = function (count) {
+                var element = $('.sum');
+                isJackPotPush = true;
+                var JackPot=count;
+
+                if(element.length>0)
+                {
+                    element.empty().append(count+" $");
+                }
+            }
+
+            chat.client.drawResult=function(thereWinners,isWinner,priceElements,id_draw)
             {
-                var elements=$("#priceElements .elementSel");
-                $(priceElements).each(function(index,value){
-                    $(elements[index]).text(value);
-                });
+
+                if($('.clock').length>0)
+                {
+                    var elements=$("#priceElements .elementSel");
+                    
+                    $("#field").load("/Home/ResultPartial?thereWinners="+thereWinners+"&isWinner="+isWinner,function(){
+                        var form = $(".price-form");
+                        if(form.length>0)
+                        {
+                            form.find("#id_draw").val(id_draw);
+                        }
+                        else
+                        {
+                            $(".play-new").click(function(){
+                                location.reload();
+                            });
+                        }
+                    });
+                
+                    $(priceElements).each(function(index,value){
+                        $(elements[index]).text(value);
+                    });
+                }
             }
 
             $.connection.hub.start().done(function () {
@@ -72,6 +112,7 @@
 
                 chat.server.getCount();
 
+                chat.server.getJackPot();
                 /*$('#sendmessage').click(function () {
                     // Call the Send method on the hub.
                     chat.server.send($('#displayname').val(), $('#message').val());
@@ -80,6 +121,7 @@
                 });*/
             });
 
+            
             /*****************************************/
             var request = function(url, params){
                 var result = $.ajax({
@@ -162,8 +204,6 @@
             $("#play").click(function(){
                 $("#field").load("/Home/GamePartial", function(){
                     chat.server.beginPlay(selectedElements);
-
-                    
                 });
             });
 

@@ -23,6 +23,8 @@ namespace Lotereya.Models
         public int Count;
         public int minValue;
         public int maxValue;
+        public int JackPot;
+        public int stepJackPot;
 
         private int Tick;
         private Draw draw;
@@ -55,6 +57,7 @@ namespace Lotereya.Models
                 var context = GlobalHost.ConnectionManager.GetHubContext<Lotereya.Hubs.Timing>();
                 context.Clients.All.startDraw();
                 Lotereya.Hubs.Timing.SendCount();
+       
 
                 isStoped = false;
                 timerStartBeforeEvent = new CustomTimer(Loter, new DataStructure() { Type = 1, Period = PeriodBeforeEvent }, 1, PeriodAfterEvent + PeriodEvent + PeriodBeforeEvent, null, timerStartBeforeEvent_onStart);
@@ -67,12 +70,25 @@ namespace Lotereya.Models
         {
             Draw.Clear();
             draw = Draw.Instance();
-            draw.PriceElements = GenerateRandomValues.Get(Count, minValue, maxValue);
-            //draw.Count = Count;
+
+            var id = Draw.Create(JackPot, stepJackPot);
+            if(id!=null)
+            {
+                draw.id_draw = Convert.ToInt32(id.id_draw.Value);
+                draw.JackPot = id.JackPot.Value;
+                draw.PriceElements = new int[] { 1, 2, 3, 4, 5, 6 };
+
+                Lotereya.Hubs.Timing.sendJackPot();
+            }
+            else
+            {
+                Stop();
+            }
         }
 
         private void timerStartEvent_onDispose()
         {
+            draw.Save();
             string[] winners = null;
             int[] priceElement = null;
             if (draw != null)
@@ -82,7 +98,6 @@ namespace Lotereya.Models
             }
 
             Lotereya.Hubs.Timing.EndPlay(winners, priceElement);
-
         }
 
         private void Loter(object state)
@@ -117,7 +132,7 @@ namespace Lotereya.Models
             int minutes = (Tick - hours * 3600000) / 60000;
             int second = (Tick - hours * 3600000 - minutes * 60000) / 1000;*/
             //context.Clients.All.addMessage(Helper.GetMessage(((DataStructure)state).Type), Helper.Converter(hours) + ":" + Helper.Converter(minutes) + ":" + Helper.Converter(second));
-            context.Clients.All.secondIs(Tick/1000);
+            context.Clients.All.secondIs(((DataStructure)state).Type,Tick / 1000);
 
             if (Tick <= 0)
             {

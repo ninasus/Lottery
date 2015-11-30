@@ -57,3 +57,4 @@ c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\bin\Debug\EntityFramework.S
 c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache
 c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.dll
 c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.pdb
+E:\Projects\Lottereya\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache

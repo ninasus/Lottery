@@ -12,6 +12,7 @@ namespace Lotereya.Controllers
         public ActionResult Index()
         {
             settings model = settings.Get();
+            Session["elements"] = null;
 
             return View(model);
         }
@@ -21,17 +22,50 @@ namespace Lotereya.Controllers
             return PartialView();
         }
 
-        public ActionResult ResultPartial(bool thereWinners, bool isWinner)
+        public ActionResult ResultPartial(int thereWinners, int isWinner)
         {
-            if (!thereWinners)
+            if (!Convert.ToBoolean(thereWinners))
                 ViewData["resultText"] = "Никто не выиграл джэкпот";
             else
-                if (!isWinner)
+                if (!Convert.ToBoolean(isWinner))
                     ViewData["resultText"] = "В этом розыграше был выигран джэкпот";
                 else
+                {
                     ViewData["resultText"] = "Поздравляем! Вы выиграли джэкпот";
+                    ViewData["result"] = 1;
+                }
 
             return PartialView();
+        }
+
+        public ActionResult Winner(Winner model)
+        {
+            string ip = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (ip == null)
+                ip = Request.ServerVariables["REMOTE_ADDR"];
+
+            if (ip == null)
+                ip = Request.UserHostAddress;
+
+            string elements = "";
+            if (Session["elements"] != null)
+            {
+                int[] array = (int[])Session["elements"];
+               
+                foreach (int i in array)
+                {
+                    elements = elements + i + ",";
+                }
+                elements.Trim().Trim(',');
+            }
+            elements = "Игра в несколько окон";
+
+
+            model.Save(ip, elements);
+
+
+            return RedirectPermanent("/");
         }
 
         public JsonResult AddElement(int element, int number, int count)
@@ -82,26 +116,7 @@ namespace Lotereya.Controllers
         public JsonResult AutoElements(int min, int max, int count)
         {
             int[] array = Lotereya.Models.GenerateRandomValues.Get(count, min, max);
-
-            /*    new int[count];
-
-            int i = 0;
-
-            Random rnd = new Random();
-
-            while (true)
-            {
-                int element = rnd.Next(min, max + 1);
-                if (!array.Any(item => item == element))
-                {
-                    array[i] = element;
-                    i++;
-                }
-
-                if (i == count)
-                    break;
-            }*/
-
+                        
             Session["elements"] = array;
 
             return Json(array, JsonRequestBehavior.AllowGet);

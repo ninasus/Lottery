@@ -52,6 +52,8 @@ namespace Lotereya.Controllers
                 lotter.Count = sets.countValue;
                 lotter.minValue = sets.minValue;
                 lotter.maxValue = sets.maxValue;
+                lotter.stepJackPot = sets.stepJackPot;
+                lotter.JackPot = sets.minJackPot;
                 lotter.Start();
             }
             else
