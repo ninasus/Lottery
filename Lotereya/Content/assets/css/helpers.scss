@@ -124,26 +124,6 @@ article {
   }
 }
 
-.btn-close {
-  background: #219ecc;
-  border-radius: 4px;
-  color: #eff1f3;
-  text-shadow: 1px 0 0 #b8dbe9;
-  font-size: 18px;
-  line-height: 1.6;
-  text-transform: uppercase;
-  display: inline-block;
-  padding: 0 5px;
-  &:hover {
-    text-decoration: none;
-    color: #ccc;
-  }
-  .icon {
-    float: right;
-    margin: 2px 0px 2px 5px;
-  }
-}
-
 .modal-backdrop.in {
   opacity: 0.7;
 }
@@ -175,13 +155,35 @@ input[type=text], input[type=tel], input[type=email], input[type=password], text
     }
   }
 }
-.alert {
-  display: inline-block;
-  &-info {
-    background: #fff;
-    border: none;
-    border-radius: 3px;
-    font-size: 25px;
-    color: #323333;
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
+  }
+}
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+    -ms-transform: rotate(-360deg);
+    -moz-transform: rotate(-360deg);
+    -webkit-transform: rotate(-360deg);
+    -o-transform: rotate(-360deg);
   }
 }

@@ -8,3 +8,13 @@ d:\_Loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.SqlServer.xml
 d:\_Loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.csprojResolveAssemblyReference.cache
 d:\_Loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.dll
 d:\_Loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.pdb
+E:\_loto\Lottery\DataBaseLayer\bin\Release\DataBaseLayer.dll.config
+E:\_loto\Lottery\DataBaseLayer\bin\Release\DataBaseLayer.dll
+E:\_loto\Lottery\DataBaseLayer\bin\Release\DataBaseLayer.pdb
+E:\_loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.dll
+E:\_loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.SqlServer.dll
+E:\_loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.xml
+E:\_loto\Lottery\DataBaseLayer\bin\Release\EntityFramework.SqlServer.xml
+E:\_loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.csprojResolveAssemblyReference.cache
+E:\_loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.dll
+E:\_loto\Lottery\DataBaseLayer\obj\Release\DataBaseLayer.pdb

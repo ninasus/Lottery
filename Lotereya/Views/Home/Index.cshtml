@@ -23,12 +23,11 @@
     </div>
 </header>
 
-<div id="field">
-    @Html.Partial("WorkFieldPartial", new Tuple<int, int>(Model.minValue, Model.maxValue))
+<div id="content">
+    <div id="field" class="container">
+        @Html.Partial("WorkFieldPartial", new Tuple<int, int>(Model.minValue, Model.maxValue))
+    </div>
 </div>
-
-<div class="count"></div>
-
 
 @section scripts {
 
@@ -52,7 +51,7 @@
                 else
                 {
                     if(element.length>0)
-                        $('.clock').empty().append(htmlEncode("Идет обработка данных"));
+                        $('.clock').closest('#progress').html(htmlEncode("Идет обработка данных..."));
                 }
             }
 
@@ -83,19 +82,22 @@
             chat.client.drawResult=function(thereWinners,isWinner,priceElements,id_draw)
             {
 
-                if($('.clock').length>0)
+                if ($('#waiting').length > 0)
                 {
-                    var elements=$("#priceElements .elementSel");
+                    var elements = $("#priceElements .elementSel");
                     
-                    $("#field").load("/Home/ResultPartial?thereWinners="+thereWinners+"&isWinner="+isWinner,function(){
+                    $("#field").load("/Home/ResultPartial?thereWinners=" + thereWinners + "&isWinner=" + isWinner, function() {
                         var form = $(".price-form");
-                        if(form.length>0)
+                        
+                        $('#modal_winner').modal('show');
+                        
+                        if(form.length > 0)
                         {
                             form.find("#id_draw").val(id_draw);
                         }
                         else
                         {
-                            $(".play-new").click(function(){
+                            $(".play-new").on('click', function() {
                                 location.reload();
                             });
                         }

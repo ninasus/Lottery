@@ -1,46 +1,65 @@
 ﻿@model Lotereya.Models.Winner
 
-@if (ViewData["resultText"] != null)
-{
-    <div class="result">
-        @ViewData["resultText"]
-    </div>
-}
+<div id="result">
+    <p>Результат розыгрыша</p>
+    @if ((ViewData["result"] != null) && ((int)ViewData["result"] == 1))
+    {
+        <div>
+            Джекпот выигран поздравляем<br>
+            <span>победителя</span>
+        </div>
+    }
+    else
+    {
+        <div>
+            Джекпот <span>не</span> выигран
+        </div>
+    }
+    <button class="btn btn-default play-new">Нажмите тут, что бы играть снова!</button>
+</div>
+
 
 @if ((ViewData["result"] != null) && ((int)ViewData["result"] == 1))
 {
-    using(Html.BeginForm("Winner","Home"))
-    {
-        <div class="price-form">
-            @Html.HiddenFor(model=>model.id_draw)
-            
-            
-
-            <span>Поздравляем Вы выиграли джекпот</span>
-            <span>Заполните форму чтобы получить приз</span>
-            <div>
-                <span>Ваше Ф.И.О.</span>
-               @Html.EditorFor(model=>model.name)
-               @Html.ValidationMessageFor(model => model.name)
-            </div>
-            <div>
-                <span>Ваш e-mail</span>
-                @Html.EditorFor(model => model.email)
-                @Html.ValidationMessageFor(model => model.email)
-            </div>
-            <div>
-                <span>Ваш телефон</span>
-                @Html.EditorFor(model => model.phone)
-                @Html.ValidationMessageFor(model => model.phone)
-            </div>
-
-            <div>
-                <input type="submit" value="Отправить" />
+    <div class="modal fade modal_frm" id="modal_winner" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <a href="#" class="btn-close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></a>
+                <div class="modal-heading">
+                    Поздравляем Вы выиграли джекпот
+					    <p>Заполните форму чтобы получить приз</p>
+                </div>
+                @using (Html.BeginForm("Winner", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.HiddenFor(model => model.id_draw)
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label>Ваше Ф.И.О.</label>
+                            @Html.TextBoxFor(model => model.name, new { @class = "form-control input-name" })
+                            @Html.ValidationMessageFor(model => model.name)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label>Ваш e-mail</label>
+                            @Html.TextBoxFor(model => model.email, new { @class = "form-control input-email" })
+                            @Html.ValidationMessageFor(model => model.email)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label>Ващ телефон</label>
+                            @Html.TextBoxFor(model => model.phone, new { @class = "form-control input-tel" })
+                            @Html.ValidationMessageFor(model => model.phone)
+                        </div>
+                    </div>
+                    <div class="form-group form-bot">
+                        <div class="col-xs-12">
+                            <button class="btn btn-default frm-submit" type="submit">Отправить</button>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
-    }
-}
-else
-{
-    <div class="play-new">Нажмите тут, чтобы играть снова!</div>
+    </div>
 }

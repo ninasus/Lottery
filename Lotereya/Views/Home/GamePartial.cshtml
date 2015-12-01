@@ -1,5 +1,24 @@
-﻿<div class="clock">
-    
+﻿<div id="waiting">
+    <div class="row">
+        <div class="col-xs-4 text-center">
+            <div id="progress">
+                <p>Дождитесь розыгрыша</p>
+                <div class="inner">
+                    <p>
+                        ОСТАЛОСЬ
+                    </p>
+                    <div class="time clock">
+                        <p>&nbsp;</p>                        
+                    </div>
+                    <p>СЕК</p>
+                </div>
+                <div class="loading"></div>
+            </div>
+        </div>
+        <div class="col-xs-8 text-center">
+            <img src="~/Content/demo/promo.jpg" alt="" />
+        </div>
+    </div>
 </div>
 
 <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
@@ -8,9 +27,9 @@
 <!--SignalR script to update the chat page and send messages.-->
 <script>
     $(function () {
-        
+
         var chat = $.connection.timing;
-        
-       
+
+
     });
 </script>

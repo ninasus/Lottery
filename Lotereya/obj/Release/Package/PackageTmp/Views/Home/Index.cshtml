@@ -23,12 +23,11 @@
     </div>
 </header>
 
-<div id="field">
-    @Html.Partial("WorkFieldPartial", new Tuple<int, int>(Model.minValue, Model.maxValue))
+<div id="content">
+    <div id="field" class="container">
+        @Html.Partial("WorkFieldPartial", new Tuple<int, int>(Model.minValue, Model.maxValue))
+    </div>
 </div>
-
-<div class="count"></div>
-
 
 @section scripts {
 
@@ -39,20 +38,75 @@
         $(function () {
             var chat = $.connection.timing;
 
-            chat.client.addMessage = function (type, tick) {
-                $('.time_to_draw').empty().append(htmlEncode(tick));
+            chat.client.secondIs = function (type,tick) {
+                var element = $('.clock');
+
+                if(type==1)
+                {
+                    $('.time_to_draw').empty().append(htmlEncode(tick));
+
+                    if(element.length>0)
+                        $('.clock').empty().append(htmlEncode(tick));
+                }
+                else
+                {
+                    if(element.length>0)
+                        $('.clock').closest('#progress').html(htmlEncode("Идет обработка данных..."));
+                }
             }
 
             chat.client.SendCount = function (count) {
                 $('.now_play').empty().append(count);
             }
-
+                       
             chat.client.endDraw = function (){
                 location.reload();
             }
 
             chat.client.startDraw = function (){
                 location.reload();
+                $('.sum').empty().append(" $");
+            }
+
+            chat.client.SendJackPot = function (count) {
+                var element = $('.sum');
+                isJackPotPush = true;
+                var JackPot=count;
+
+                if(element.length>0)
+                {
+                    element.empty().append(count+" $");
+                }
+            }
+
+            chat.client.drawResult=function(thereWinners,isWinner,priceElements,id_draw)
+            {
+
+                if ($('#waiting').length > 0)
+                {
+                    var elements = $("#priceElements .elementSel");
+                    
+                    $("#field").load("/Home/ResultPartial?thereWinners=" + thereWinners + "&isWinner=" + isWinner, function() {
+                        var form = $(".price-form");
+                        
+                        $('#modal_winner').modal('show');
+                        
+                        if(form.length > 0)
+                        {
+                            form.find("#id_draw").val(id_draw);
+                        }
+                        else
+                        {
+                            $(".play-new").on('click', function() {
+                                location.reload();
+                            });
+                        }
+                    });
+                
+                    $(priceElements).each(function(index,value){
+                        $(elements[index]).text(value);
+                    });
+                }
             }
 
             $.connection.hub.start().done(function () {
@@ -60,6 +114,7 @@
 
                 chat.server.getCount();
 
+                chat.server.getJackPot();
                 /*$('#sendmessage').click(function () {
                     // Call the Send method on the hub.
                     chat.server.send($('#displayname').val(), $('#message').val());
@@ -68,6 +123,7 @@
                 });*/
             });
 
+            
             /*****************************************/
             var request = function(url, params){
                 var result = $.ajax({
@@ -115,7 +171,7 @@
                     }
 
                 } else {
-                    if(cellNumber<(@Model.countValue))
+                    if (cellNumber < (@Model.countValue))
                     {
                         var data = { element: $(this).text(), number: cellNumber, count: @Model.countValue };
                         var result = request("/Home/AddElement",data);
@@ -124,9 +180,10 @@
                             $(this).addClass("selectedElement");
                             selectedElements[cellNumber] = $(this).text();
                             cellNumber = cellNumber + 1;
-                            $("#selectedElements").find("span:nth-child("+(cellNumber+1)+")").text($(this).text());
+                            $("#selectedElements").find("span:nth-child("+(cellNumber)+")").text($(this).text());
 
-                            if((cellNumber==(@Model.countValue))&&((@Lotereya.Models.LotTimer.IsStoped())==false))
+                           
+                            if((cellNumber==(@Model.countValue))&&(@Convert.ToInt32(Lotereya.Models.LotTimer.IsStoped())==false))
                                 $("#play").removeAttr("disabled");
                         }
 
@@ -135,7 +192,7 @@
             });
 
 
-            $("#reset").click(function(){
+            $("#reset").click(function() {
                 var result = request("/Home/ClearElement",{});
                 if (result)
                 {
@@ -148,14 +205,23 @@
 
             $("#play").click(function(){
                 $("#field").load("/Home/GamePartial", function(){
-                    chat.server.beginPlay();
+                    chat.server.beginPlay(selectedElements);
                 });
             });
 
             $("#autoSelect").click(function(){
-                var data = { min: @Model.minValue, max:@Model.maxValue, count: @Model.countValue };
+                //var result = request("/Home/ClearElement",{});
+                //if (result)
+                //{
+                //    $("#selectedElements span").text("");
+                //    $(".element").removeClass("selectedElement");
+                //    $("#play").attr("disabled","disabled");
+                //    cellNumber = 0;
+                //}
+                var data = { min: @Model.minValue, max: @Model.maxValue, count: @Model.countValue };
                 var result = request("/Home/AutoElements",data);
                 cellNumber = 0;
+                $(".selectedElement").removeClass("selectedElement");
                 $(result).each(function(index,value){
                     selectedElements[cellNumber] = result[cellNumber];
 

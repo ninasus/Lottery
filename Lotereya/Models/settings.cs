@@ -92,10 +92,11 @@ namespace Lotereya.Models
         {
             try
             {
-                DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities();
-
-                dbc.settings.Add((DataBaseLayer.setting)model);
-                dbc.SaveChanges();
+                using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+                {
+                    dbc.settings.Add((DataBaseLayer.setting)model);
+                    dbc.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
