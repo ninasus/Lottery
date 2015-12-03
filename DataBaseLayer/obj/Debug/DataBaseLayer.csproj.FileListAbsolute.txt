@@ -57,3 +57,12 @@ c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csp
 c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.dll
 c:\WorkSpace\Projects\Lottery2\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.pdb
 E:\Projects\Lottereya\Lottery\DataBaseLayer\obj\Debug\DataBaseLayer.csprojResolveAssemblyReference.cache
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\bin\Debug\DataBaseLayer.dll.config
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\bin\Debug\DataBaseLayer.dll
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\bin\Debug\DataBaseLayer.pdb
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\bin\Debug\EntityFramework.dll
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\bin\Debug\EntityFramework.xml
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\obj\Debug\DataBaseLayer.dll
+E:\Projects\Lottereya\Lottery2\DataBaseLayer\obj\Debug\DataBaseLayer.pdb

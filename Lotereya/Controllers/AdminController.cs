@@ -63,5 +63,48 @@ namespace Lotereya.Controllers
 
             return PartialView("LotterPartial",1);
         }
+
+        public ActionResult WinnersPartial()
+        {
+            var model = WinerViewModel.Get();
+            return PartialView(model);
+        }
+
+        public ActionResult ArticlePartial()
+        {
+            var model = article.Get();
+            return PartialView(model);
+        }
+
+        public ActionResult ArticleEditPartial(int? id_article)
+        {
+            if(id_article.HasValue)
+            {
+                var model = article.GetById(id_article.Value);
+                return PartialView(model);
+            }
+            else
+            {
+                return PartialView();
+            }
+        }
+
+
+        public ActionResult articleEdit(article model)
+        {
+            if (model.id_article == 0)
+                model.Insert();
+            else
+                model.Edit();
+
+            var model2 = article.Get();
+            return PartialView("ArticlePartial", model2);
+        }
+
+        public ActionResult articleDelete(int id_article)
+        {
+            article.Delete(id_article);
+            return Json(1, JsonRequestBehavior.AllowGet);
+        }
     }
 }

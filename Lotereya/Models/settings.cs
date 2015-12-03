@@ -38,33 +38,37 @@ namespace Lotereya.Models
 
         public static settings Get()
         {
-            DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities();
-
-            var query = from sett in dbc.settings
-                        let maxDate = dbc.settings.Select(item => item.date).Max()
-                        where sett.date == maxDate
-                        select new settings()
-                        {
-                            id_settings = sett.id_settings,
-                            countValue = sett.countValue,
-                            maxValue = sett.maxValue,
-                            minJackPot = sett.minJackPot,
-                            minValue = sett.minValue,
-                            stepJackPot = sett.stepJackPot,
-                            timeAfterDraw = sett.timeAfterDraw,
-                            timeBeforeDraw = sett.timeBeforeDraw,
-                            timeDraw = sett.timeDraw
-                        };
-
             settings result = null;
 
-            if (query.Any())
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
             {
-                result = query.First();
-            }
-            else
-            {
-                result = SetDefaultValue();
+
+                var query = from sett in dbc.settings
+                            let maxDate = dbc.settings.Select(item => item.date).Max()
+                            where sett.date == maxDate
+                            select new settings()
+                            {
+                                id_settings = sett.id_settings,
+                                countValue = sett.countValue,
+                                maxValue = sett.maxValue,
+                                minJackPot = sett.minJackPot,
+                                minValue = sett.minValue,
+                                stepJackPot = sett.stepJackPot,
+                                timeAfterDraw = sett.timeAfterDraw,
+                                timeBeforeDraw = sett.timeBeforeDraw,
+                                timeDraw = sett.timeDraw
+                            };
+
+
+
+                if (query.Any())
+                {
+                    result = query.First();
+                }
+                else
+                {
+                    result = SetDefaultValue();
+                }
             }
 
             return result;

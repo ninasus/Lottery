@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="LoterejaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="id_article" />
+          </Key>
+          <Property Name="id_article" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JackPot" Type="int" Nullable="false" />
+          <Property Name="place" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="date" Type="smalldatetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="drawing">
           <Key>
             <PropertyRef Name="id_draw" />
@@ -35,6 +44,7 @@
             <PropertyRef Name="id_winner" />
           </Key>
           <Property Name="id_winner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_draw" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="400" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="20" Nullable="false" />
@@ -47,6 +57,7 @@
           <Parameter Name="stepJackPot" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="LoterejaModelStoreContainer">
+          <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="drawing" EntityType="Self.drawing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="winners" EntityType="Self.winners" Schema="dbo" store:Type="Tables" />
@@ -78,6 +89,7 @@
           </FunctionImport>
           <EntitySet Name="drawings" EntityType="LoterejaModel.drawing" />
           <EntitySet Name="winners" EntityType="LoterejaModel.winner" />
+          <EntitySet Name="articles" EntityType="LoterejaModel.article" />
         </EntityContainer>
         <EntityType Name="drawing">
           <Key>
@@ -103,6 +115,16 @@
           <Property Name="phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="elements" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_draw" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="article">
+          <Key>
+            <PropertyRef Name="id_article" />
+          </Key>
+          <Property Name="id_article" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JackPot" Type="Int32" Nullable="false" />
+          <Property Name="place" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
       </Schema>
@@ -149,6 +171,7 @@
           <EntitySetMapping Name="winners">
             <EntityTypeMapping TypeName="LoterejaModel.winner">
               <MappingFragment StoreEntitySet="winners">
+                <ScalarProperty Name="id_draw" ColumnName="id_draw" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="ip" ColumnName="ip" />
                 <ScalarProperty Name="elements" ColumnName="elements" />
@@ -156,6 +179,16 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id_winner" ColumnName="id_winner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="articles">
+            <EntityTypeMapping TypeName="LoterejaModel.article">
+              <MappingFragment StoreEntitySet="article">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+                <ScalarProperty Name="id_article" ColumnName="id_article" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

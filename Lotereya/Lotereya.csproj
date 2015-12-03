@@ -140,6 +140,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Binders\ArticleBinder.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CustomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -147,6 +148,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\Timing.cs" />
+    <Compile Include="Models\article.cs" />
     <Compile Include="Models\CustomTimer.cs" />
     <Compile Include="Models\Draw.cs" />
     <Compile Include="Models\ErrorCatcher.cs" />
@@ -295,6 +297,9 @@
     <Content Include="Views\Home\PriceElementsPartial.cshtml" />
     <Content Include="Views\Home\GamePartial.cshtml" />
     <Content Include="Views\Home\ResultPartial.cshtml" />
+    <Content Include="Views\Admin\WinnersPartial.cshtml" />
+    <Content Include="Views\Admin\ArticlePartial.cshtml" />
+    <Content Include="Views\Admin\ArticleEditPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseLayer\DataBaseLayer.csproj">

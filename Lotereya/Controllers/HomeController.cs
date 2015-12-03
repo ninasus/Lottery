@@ -52,14 +52,15 @@ namespace Lotereya.Controllers
             if (Session["elements"] != null)
             {
                 int[] array = (int[])Session["elements"];
-               
+
                 foreach (int i in array)
                 {
                     elements = elements + i + ",";
                 }
                 elements.Trim().Trim(',');
             }
-            elements = "Игра в несколько окон";
+            else
+                elements = "Игра в несколько окон";
 
 
             model.Save(ip, elements);
@@ -116,7 +117,7 @@ namespace Lotereya.Controllers
         public JsonResult AutoElements(int min, int max, int count)
         {
             int[] array = Lotereya.Models.GenerateRandomValues.Get(count, min, max);
-                        
+
             Session["elements"] = array;
 
             return Json(array, JsonRequestBehavior.AllowGet);

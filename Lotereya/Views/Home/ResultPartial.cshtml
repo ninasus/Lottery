@@ -29,7 +29,7 @@
                     Поздравляем Вы выиграли джекпот
 					    <p>Заполните форму чтобы получить приз</p>
                 </div>
-                @using (Html.BeginForm("Winner", "Home", FormMethod.Post, new { @class = "form-horizontal" }))
+                @using (Html.BeginForm("Winner", "Home", FormMethod.Post, new { @class = "form-horizontal price-form" }))
                 {
                     @Html.HiddenFor(model => model.id_draw)
                     <div class="form-group">

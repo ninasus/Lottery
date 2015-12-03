@@ -39,6 +39,7 @@
     <EntitySetMapping Name="winners">
       <EntityTypeMapping TypeName="LoterejaModel.winner">
         <MappingFragment StoreEntitySet="winners">
+          <ScalarProperty Name="id_draw" ColumnName="id_draw" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="ip" ColumnName="ip" />
           <ScalarProperty Name="elements" ColumnName="elements" />
@@ -46,6 +47,16 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id_winner" ColumnName="id_winner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="articles">
+      <EntityTypeMapping TypeName="LoterejaModel.article">
+        <MappingFragment StoreEntitySet="article">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+          <ScalarProperty Name="id_article" ColumnName="id_article" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

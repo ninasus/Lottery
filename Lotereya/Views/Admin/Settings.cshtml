@@ -107,8 +107,30 @@
     @Html.Partial("LotterPartial", 0)
 </div>
 
+<div id="winnerDiv">
+
+</div>
+
+<div id="articleDiv">
+   
+</div>
+
 
 @section Scripts {
   
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#winnerDiv").load("/admin/WinnersPartial");
+            $("#articleDiv").load("/admin/ArticlePartial", function () {
+                $("#btnDelete").click(function () {
+                    if(confirm("Вы уверены, что хотите удалить эту запись?"))
+                    {
+                        ////// дописать,  articleDelete в контролере уже есть
+                    }
+                });
+            });
+        });
+    </script>
 }

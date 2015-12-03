@@ -35,33 +35,40 @@ namespace Lotereya.Models
 
         public static DataBaseLayer.create_draw_Result Create(int JackPot, int stepJackPot)
         {
-            DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities();
-            return dbc.create_draw(JackPot, stepJackPot).FirstOrDefault();
+            DataBaseLayer.create_draw_Result result;
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+            {
+                result = dbc.create_draw(JackPot, stepJackPot).FirstOrDefault();
+            }
+
+            return result;
         }
 
         public void Save()
         {
-            DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities();
-
-            var result = dbc.drawings.Where(item => item.id_draw == id_draw).FirstOrDefault();
-
-            if (result != null)
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
             {
-                result.count_winner = Winners.Count;
 
-                if (PriceElements != null)
+                var result = dbc.drawings.Where(item => item.id_draw == id_draw).FirstOrDefault();
+
+                if (result != null)
                 {
-                    string elements = "";
-                    foreach (int i in PriceElements)
+                    result.count_winner = Winners.Count;
+
+                    if (PriceElements != null)
                     {
-                        elements = elements + i + ",";
+                        string elements = "";
+                        foreach (int i in PriceElements)
+                        {
+                            elements = elements + i + ",";
+                        }
+                        elements.Trim().Trim(',');
+
+                        result.result = elements;
                     }
-                    elements.Trim().Trim(',');
 
-                    result.result = elements;
+                    dbc.SaveChanges();
                 }
-
-                dbc.SaveChanges();
             }
         }
     }

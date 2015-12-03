@@ -12,15 +12,11 @@ namespace DataBaseLayer
     using System;
     using System.Collections.Generic;
     
-    public partial class winner
+    public partial class article
     {
-        public int id_winner { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string elements { get; set; }
-        public string ip { get; set; }
+        public int id_article { get; set; }
+        public int JackPot { get; set; }
+        public string place { get; set; }
         public System.DateTime date { get; set; }
-        public int id_draw { get; set; }
     }
 }
