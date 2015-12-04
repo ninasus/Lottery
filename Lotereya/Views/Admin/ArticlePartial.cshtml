@@ -59,6 +59,22 @@ else
 
 <script>
     $(function () {
+        var request = function (url, params) {
+            var result = $.ajax({
+                url: url,
+                contentType: "application/json; charset=utf-8",
+                data: params,
+                type: "GET",
+                async: false,
+                success: function (json) {
+                    return json;
+                }
+            });
+
+            return result.responseJSON;
+        };
+
+
         $("#bthInsert").click(function () {
             $(".article-edit-part").load("/admin/ArticleEditPartial", function () {
                 $("input[id='id_article']").val(0);
@@ -67,6 +83,15 @@ else
 
         $("#bthEdit").click(function () {
             $(".article-edit-part").load("/admin/ArticleEditPartial?id_article=" + $(this).attr("data-id"));
+        });
+
+        $("#btnDelete").click(function () {
+            if (confirm("Вы уверены, что хотите удалить эту запись?")) {
+                var data = { id_article: $(this).attr("data-id") };
+                var result = request("/Admin/articleDelete", data);
+
+                $("#articleDiv").load("/admin/ArticlePartial");
+            }
         });
     });
 </script>

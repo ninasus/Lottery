@@ -5,7 +5,7 @@
 }
 
 <h2>Settings</h2>
-@if(ViewData["Error"]!=null)
+@if (ViewData["Error"] != null)
 {
     @ViewData["Error"]
 }
@@ -92,8 +92,8 @@
                 @Html.ValidationMessageFor(model => model.countValue)
             </div>
         </div>
-                          
-            
+
+
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -112,25 +112,23 @@
 </div>
 
 <div id="articleDiv">
-   
+
 </div>
 
 
 @section Scripts {
-  
+
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
     <script>
         $(function () {
+
+            $("#articleDiv").load("/admin/ArticlePartial");
+
+
             $("#winnerDiv").load("/admin/WinnersPartial");
-            $("#articleDiv").load("/admin/ArticlePartial", function () {
-                $("#btnDelete").click(function () {
-                    if(confirm("Вы уверены, что хотите удалить эту запись?"))
-                    {
-                        ////// дописать,  articleDelete в контролере уже есть
-                    }
-                });
-            });
+
+
         });
     </script>
 }
