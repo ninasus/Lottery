@@ -159,6 +159,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\css\admin.css" />
     <Content Include="Content\assets\css\helpers.scss" />
     <Content Include="Content\assets\css\mixins.scss" />
     <Content Include="Content\assets\css\non-responsive.css" />
@@ -187,6 +188,8 @@
     <Content Include="Content\assets\images\frm_bg.png" />
     <Content Include="Content\assets\images\icon_cubic.png" />
     <Content Include="Content\assets\images\icon_lenta.png" />
+    <Content Include="Content\assets\images\icon_login.png" />
+    <Content Include="Content\assets\js\admin.js" />
     <Content Include="Content\assets\js\default.js" />
     <Content Include="Content\assets\js\jquery-1.11.3.min.js" />
     <Content Include="Content\assets\js\jquery.cookie.js" />
@@ -265,6 +268,7 @@
     <Content Include="Content\assets\plugins\slick\fonts\slick.woff" />
     <Content Include="Content\assets\plugins\slick\slick-theme.scss" />
     <Content Include="Content\assets\plugins\slick\slick.scss" />
+    <Content Include="Content\assets\css\admin.scss" />
     <None Include="Properties\PublishProfiles\Loto.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -300,6 +304,8 @@
     <Content Include="Views\Admin\WinnersPartial.cshtml" />
     <Content Include="Views\Admin\ArticlePartial.cshtml" />
     <Content Include="Views\Admin\ArticleEditPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\Winners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseLayer\DataBaseLayer.csproj">

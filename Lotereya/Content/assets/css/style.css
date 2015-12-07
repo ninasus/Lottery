@@ -15,8 +15,7 @@ a {
 
 .btn:focus {
   outline: 0 !important;
-  text-decoration: none;
-  opacity: 0.8; }
+  text-decoration: none; }
 .btn.btn-yellow {
   background: #fcff17;
   border: 1px solid #ebeced;
@@ -223,6 +222,8 @@ body {
   margin-bottom: 20px;
   padding-bottom: 20px; }
 
+#game .col-xs-5 {
+  padding-left: 0; }
 #game .play_field .grid {
   margin-bottom: 10px; }
   #game .play_field .grid > div {
@@ -231,7 +232,7 @@ body {
     border-radius: 5px;
     border: 1px solid #c3c3c3;
     float: left;
-    margin: 4px;
+    margin: 4px 8px 4px 0;
     background: url(../images/bg_line.png) 0 0 repeat;
     text-align: center;
     font-size: 18px;
@@ -249,14 +250,19 @@ body {
   height: 40px;
   border: 1px solid #334c85;
   color: #334c85;
-  margin: 0 10px 0 0; }
+  margin: 0 9px 0 0; }
   #game .play_field .btns .btn:first-child {
-    margin-left: 5px; }
+    margin-left: 0px; }
   #game .play_field .btns .btn:last-child {
     margin-right: 0; }
   #game .play_field .btns .btn:hover {
     background: #334c85;
     color: #fff; }
+  #game .play_field .btns .btn.active {
+    background: #334c85;
+    color: #fff; }
+    #game .play_field .btns .btn.active:hover {
+      background: #2c4173; }
 #game .post {
   padding-top: 30px;
   margin-bottom: 40px;
@@ -320,7 +326,7 @@ body {
     line-height: 1;
     margin-bottom: 10px;
     text-transform: uppercase;
-    height: 160px; }
+    height: 260px; }
     #result > div span {
       color: #2d4d86;
       font-size: 83px; }

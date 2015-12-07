@@ -1,56 +1,55 @@
 ﻿@model Lotereya.Models.article
+<div class="col-sm-7">
+    <div id="holder">
+        @using (Ajax.BeginForm("/articleEdit", new AjaxOptions { UpdateTargetId = "articleDiv" }))
+        {
+            @Html.AntiForgeryToken()
 
-<div id="holder">
-    @using (Ajax.BeginForm("/articleEdit", new AjaxOptions { UpdateTargetId = "articleDiv" }))
-    {
-        @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                <h4>Редактировать/Добавить</h4>
+                <hr />
 
-        <div class="form-horizontal">
-            <h4>Редактирование</h4>
-            <hr />
+                @Html.HiddenFor(model => model.id_article)
 
 
-            @Html.HiddenFor(model => model.id_article)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.place, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(model => model.place, new { @class = "form-control" })
 
+                    </div>
+                </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.place, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.place)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.JackPot, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+                        @Html.TextBoxFor(model => model.JackPot, new { @class = "form-control" })
 
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-9">
+
+                        @Html.TextBoxFor(model => model.date, new { @class = "form-control", @Value = (Model != null ? Model.date.ToShortDateString() : "") })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <input type="submit" value="Сохранить" class="btn btn-default" />
+                        <input type="button" value="Отменить" id="btnCancel" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.JackPot, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.JackPot)
-
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.date, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    
-                    @Html.TextBoxFor(model => model.date, new { @Value = (Model!=null?Model.date.ToShortDateString():"") })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Сохранить" class="btn btn-default" />
-                    <input type="button" value="Отменить" id="btnCancel" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
+        }
+    </div>
 </div>
-
 <script>
     $(function () {
         $("#btnCancel").click(function () {
-            $("#holder").css("display","none");
+            $("#holder").css("display", "none");
         });
     });
 </script>

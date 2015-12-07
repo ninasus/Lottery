@@ -1,69 +1,74 @@
 ﻿@model List<Lotereya.Models.WinerViewModel>
 
-@if ((Model != null)&&(Model.Count>0))
-{
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(model => model[0].id_draw)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].name)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].phone)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].email)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].elements)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].ip)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].JackPot)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].date)
-            </td>
-        </tr>
-        @foreach (var item in Model)
+<div class="panel panel-default">
+    <div class="panel-heading">Список победителей</div>
+    <div class="panel-body">
+        @if ((Model != null) && (Model.Count > 0))
         {
-            <tr>
-                <td>
-                    @item.id_draw
-                </td>
-                <td>
-                    @item.name
-                </td>
-                <td>
-                    @item.phone
-                </td>
-                <td>
-                    @item.email
-                </td>
-                <td>
-                    @item.elements
-                </td>
-                <td>
-                    @item.ip
-                </td>
-                <td>
-                    @item.JackPot
-                </td>
-                <td>
-                    @item.date
-                </td>
-            </tr>
-        }
+            <table class="table">
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model[0].id_draw)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].name)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].phone)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].email)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].elements)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].ip)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].JackPot)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].date)
+                    </td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.id_draw
+                        </td>
+                        <td>
+                            @item.name
+                        </td>
+                        <td>
+                            @item.phone
+                        </td>
+                        <td>
+                            @item.email
+                        </td>
+                        <td>
+                            @item.elements
+                        </td>
+                        <td>
+                            @item.ip
+                        </td>
+                        <td>
+                            @item.JackPot
+                        </td>
+                        <td>
+                            @item.date
+                        </td>
+                    </tr>
+                }
 
-    </table>
-}
-else
-{
-    <div class="alert alert-info">
-        Победители отсутствуют
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                Еще никто не побеждал!
+            </div>
+        }
     </div>
-}
+</div>

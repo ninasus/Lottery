@@ -17,5 +17,48 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="create_draw" FunctionName="LoterejaModel.Store.create_draw">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LoterejaModel.create_draw_Result">
+          <ScalarProperty Name="id_draw" ColumnName="id_draw" />
+          <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="drawings">
+      <EntityTypeMapping TypeName="LoterejaModel.drawing">
+        <MappingFragment StoreEntitySet="drawing">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+          <ScalarProperty Name="count_winner" ColumnName="count_winner" />
+          <ScalarProperty Name="result" ColumnName="result" />
+          <ScalarProperty Name="id_draw" ColumnName="id_draw" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="winners">
+      <EntityTypeMapping TypeName="LoterejaModel.winner">
+        <MappingFragment StoreEntitySet="winners">
+          <ScalarProperty Name="id_draw" ColumnName="id_draw" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="ip" ColumnName="ip" />
+          <ScalarProperty Name="elements" ColumnName="elements" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id_winner" ColumnName="id_winner" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="articles">
+      <EntityTypeMapping TypeName="LoterejaModel.article">
+        <MappingFragment StoreEntitySet="article">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+          <ScalarProperty Name="id_article" ColumnName="id_article" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

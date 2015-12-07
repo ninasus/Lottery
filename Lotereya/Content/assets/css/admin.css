@@ -1,0 +1,82 @@
+body {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  color: #6b6b6b;
+  background: #fff; }
+
+#header {
+  height: 50px;
+  background: rgba(35, 35, 35, 0.9) none repeat scroll 0 0;
+  padding: 0 20px; }
+  #header .navbar-header {
+    float: left; }
+    #header .navbar-header a {
+      color: #d9d9d9; }
+    #header .navbar-header i {
+      color: #a47441; }
+  #header .navbar-tools {
+    float: right; }
+    #header .navbar-tools li.dropdown.current-user .dropdown-toggle {
+      padding: 10px 4px 10px 9px;
+      display: block;
+      color: #d9d9d9;
+      text-decoration: none !important; }
+      #header .navbar-tools li.dropdown.current-user .dropdown-toggle:hover, #header .navbar-tools li.dropdown.current-user .dropdown-toggle:focus {
+        background: #4f4f4f; }
+
+#main {
+  padding-left: 220px;
+  position: relative; }
+  #main aside {
+    width: 220px;
+    padding: 10px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    background: #4f4f4f; }
+    #main aside .main-navigation-menu {
+      list-style: outside none none;
+      margin: 0;
+      padding: 0; }
+      #main aside .main-navigation-menu > li {
+        border: 0 none;
+        display: block;
+        margin: 0;
+        padding: 0; }
+        #main aside .main-navigation-menu > li a {
+          border-bottom-color: #404040;
+          border-top-color: #646464;
+          color: #d9d9d9;
+          border-image: none;
+          border-style: solid none;
+          border-width: 1px 0;
+          display: block;
+          font-size: 14px;
+          font-weight: 300;
+          margin: 0;
+          padding: 10px 15px;
+          position: relative;
+          text-decoration: none; }
+          #main aside .main-navigation-menu > li a:hover {
+            background: #424242; }
+          #main aside .main-navigation-menu > li a i {
+            display: inline-block;
+            font-size: 16px;
+            margin-right: 5px;
+            text-shadow: none;
+            color: #a47441;
+            font-weight: normal; }
+  #main .content {
+    background: #fff;
+    min-height: 600px;
+    padding: 10px 50px; }
+
+footer {
+  height: 50px;
+  font-size: 12px;
+  padding: 15px 20px 15px 20px;
+  position: relative;
+  background: rgba(35, 35, 35, 0.9) none repeat scroll 0 0;
+  color: #d9d9d9; }

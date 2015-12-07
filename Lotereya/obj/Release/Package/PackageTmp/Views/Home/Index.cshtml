@@ -36,6 +36,8 @@
     <!--SignalR script to update the chat page and send messages.-->
     <script>
         $(function () {
+            $("#reset").attr("disabled", true).removeClass('active');
+            $("#play").attr("disabled", true).removeClass('active');
             var chat = $.connection.timing;
 
             chat.client.secondIs = function (type,tick) {
@@ -146,7 +148,7 @@
             $(".element").click(function () {
                 if ($(this).hasClass("selectedElement")) {
                     $(this).removeClass("selectedElement");
-                    $("#play").attr("disabled","disabled");
+                    $("#play").attr("disabled","disabled").addClass('active');
 
 
                     var data = { element: $(this).text() };
@@ -171,6 +173,7 @@
                     }
 
                 } else {
+                    $("#reset").removeAttr("disabled").addClass('active');
                     if (cellNumber < (@Model.countValue))
                     {
                         var data = { element: $(this).text(), number: cellNumber, count: @Model.countValue };
@@ -184,7 +187,7 @@
 
                            
                             if((cellNumber==(@Model.countValue))&&(@Convert.ToInt32(Lotereya.Models.LotTimer.IsStoped())==false))
-                                $("#play").removeAttr("disabled");
+                                $("#play").removeAttr("disabled").addClass('active');
                         }
 
                     }
@@ -201,6 +204,8 @@
                     $("#play").attr("disabled","disabled");
                     cellNumber = 0;
                 }
+                $("#reset").attr("disabled", true).removeClass('active');
+                $("#play").attr("disabled", true).removeClass('active');
             });
 
             $("#play").click(function(){
@@ -210,6 +215,8 @@
             });
 
             $("#autoSelect").click(function(){
+                $("#reset").removeAttr("disabled").addClass('active');
+                $("#play").addClass('active');
                 //var result = request("/Home/ClearElement",{});
                 //if (result)
                 //{
@@ -231,8 +238,9 @@
                     cellNumber = cellNumber + 1;
                 });
 
-                if((cellNumber==(@Model.countValue))&&(@Convert.ToInt32(Lotereya.Models.LotTimer.IsStoped())==false))
+                if((cellNumber==(@Model.countValue))&&(@Convert.ToInt32(Lotereya.Models.LotTimer.IsStoped())==false)) {
                     $("#play").removeAttr("disabled");
+                }
             });
         });
         // This optional function html-encodes messages for display in the page.

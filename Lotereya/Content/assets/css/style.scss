@@ -100,6 +100,9 @@ body {
   padding-bottom: 20px;
 }
 #game {
+  .col-xs-5 {
+    padding-left: 0;
+  }
   .play_field {
     .grid {
       margin-bottom: 10px;
@@ -109,7 +112,7 @@ body {
         border-radius: 5px;
         border: 1px solid #c3c3c3;
         float: left;
-        margin: 4px;
+        margin: 4px 8px 4px 0;
         background: url(../images/bg_line.png) 0 0 repeat;
         text-align: center;
         font-size: 18px;
@@ -131,9 +134,9 @@ body {
         height: 40px;
         border: 1px solid #334c85;
         color: #334c85;
-        margin: 0 10px 0 0;
+        margin: 0 9px 0 0;
         &:first-child {
-          margin-left: 5px;
+          margin-left: 0px;
         }
         &:last-child {
           margin-right: 0;
@@ -141,6 +144,13 @@ body {
         &:hover {
           background: #334c85;
           color: #fff;
+        }
+        &.active {
+          background: #334c85;
+          color: #fff;
+          &:hover {
+            background: darken(#334c85, 5%);
+          }
         }
       }
     }
@@ -219,7 +229,7 @@ body {
     line-height: 1;
     margin-bottom: 10px;
     text-transform: uppercase;
-    height: 160px;
+    height: 260px;
 
     span {
       color: #2d4d86;

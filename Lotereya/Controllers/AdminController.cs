@@ -40,6 +40,12 @@ namespace Lotereya.Controllers
             return View(model);
         }
 
+
+        public ActionResult Winners()
+        {
+            return View();
+        }
+
         public ActionResult Lotter()
         {
             LotTimer lotter = LotTimer.Instance();

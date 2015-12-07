@@ -1,114 +1,123 @@
 ﻿@model Lotereya.Models.settings
 
 @{
-    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Настройки";
 }
 
-<h2>Settings</h2>
-@if(ViewData["Error"]!=null)
+<h2>Настройки</h2>
+<hr />
+@if (ViewData["Error"] != null)
 {
-    @ViewData["Error"]
+    <div class="alert alert-danger">
+        @ViewData["Error"]
+    </div>
 }
 
 @if (ViewData["Info"] != null)
 {
-    @ViewData["Info"]
+    <div class="alert alert-info">
+        @ViewData["Info"]
+    </div>
 }
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>settings</h4>
-        <hr />
-        @Html.ValidationSummary(true)
-
-
-        @Html.HiddenFor(model => model.id_settings)
-
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.timeBeforeDraw, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.timeBeforeDraw)
-                @Html.ValidationMessageFor(model => model.timeBeforeDraw)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.timeDraw, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.timeDraw)
-                @Html.ValidationMessageFor(model => model.timeDraw)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.timeAfterDraw, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.timeAfterDraw)
-                @Html.ValidationMessageFor(model => model.timeAfterDraw)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.minValue, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.minValue)
-                @Html.ValidationMessageFor(model => model.minValue)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.maxValue, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.maxValue)
-                @Html.ValidationMessageFor(model => model.maxValue)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.minJackPot, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.minJackPot)
-                @Html.ValidationMessageFor(model => model.minJackPot)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.stepJackPot, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.stepJackPot)
-                @Html.ValidationMessageFor(model => model.stepJackPot)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.countValue, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.countValue)
-                @Html.ValidationMessageFor(model => model.countValue)
-            </div>
-        </div>
-                          
-            
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Зберегти" class="btn btn-default" />
+<div class="row">
+    <div class="col-sm-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">Статус лотереи</div>
+            <div class="panel-body">
+                <div id="lotterDiv">
+                    @Html.Partial("LotterPartial", 0)
+                </div>
             </div>
         </div>
     </div>
-}
+    <div class="col-sm-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">Основные настрйоки</div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-<div id="lotterDiv">
-    @Html.Partial("LotterPartial", 0)
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+
+
+                        @Html.HiddenFor(model => model.id_settings)
+
+
+
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <h4>Время лотереи</h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">Время розыгрыша, сек</label>
+                                @Html.TextBoxFor(model => model.timeBeforeDraw, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.timeBeforeDraw)
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">Обарботка данных, сек</label>
+                                @Html.TextBoxFor(model => model.timeDraw, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.timeDraw)
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">После розыгрыша, сек</label>
+                                @Html.TextBoxFor(model => model.timeAfterDraw, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.timeAfterDraw)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <hr />
+                                <h4>Настройка поля</h4>
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">Минимальное число</label>
+                                @Html.TextBoxFor(model => model.minValue, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.minValue)
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">Максимальное число</label>
+                                @Html.TextBoxFor(model => model.maxValue, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.maxValue)
+                            </div>
+                            <div class="col-sm-4">
+                                <label class="control-label">Количество номеров</label>
+                                @Html.TextBoxFor(model => model.countValue, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.countValue)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <hr />
+                                <h4>Настройка джекпота</h4>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="control-label">Минимальное значение, $</label>
+                                @Html.TextBoxFor(model => model.minJackPot, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.minJackPot)
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="control-label">Прирост, $</label>
+                                @Html.TextBoxFor(model => model.stepJackPot, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.stepJackPot)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <hr />
+                                <input type="submit" value="Сохранить" class="btn btn-primary btn-lg" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>
 
 
 @section Scripts {
-  
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 }

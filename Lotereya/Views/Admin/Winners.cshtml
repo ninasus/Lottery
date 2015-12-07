@@ -1,0 +1,49 @@
+﻿@model Lotereya.Models.settings
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Победители";
+}
+
+<h2>Победители</h2>
+<hr />
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData["Error"]
+    </div>
+}
+
+@if (ViewData["Info"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["Info"]
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="winnerDiv">
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div id="articleDiv">
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script>
+        $(function () {
+
+            $("#articleDiv").load("/admin/ArticlePartial");
+
+
+            $("#winnerDiv").load("/admin/WinnersPartial");
+
+
+        });
+    </script>
+}

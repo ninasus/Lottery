@@ -1,22 +1,31 @@
 ﻿@model Lotereya.Models.Winner
 
-<div id="result">
-    <p>Результат розыгрыша</p>
-    @if ((ViewData["result"] != null) && ((int)ViewData["result"] == 1))
-    {
-        <div>
-            Джекпот выигран поздравляем<br>
-            <span>победителя</span>
+<div class="row">
+    <div class="col-xs-4 text-center">
+        <div id="result">
+            <p>Результат розыгрыша</p>
+            @if ((ViewData["result"] != null) && ((int)ViewData["result"] == 1))
+            {
+                <div>
+                    Джекпот выигран поздравляем<br>
+                    <span>победителя</span>
+                </div>
+            }
+            else
+            {
+                <div>
+                    Джекпот <span>не</span> выигран
+                </div>
+            }
+            <button class="btn btn-default play-new">Нажмите тут, что бы играть снова!</button>
         </div>
-    }
-    else
-    {
-        <div>
-            Джекпот <span>не</span> выигран
-        </div>
-    }
-    <button class="btn btn-default play-new">Нажмите тут, что бы играть снова!</button>
+    </div>
+    <div class="col-xs-8 text-right">
+        <img src="~/Content/demo/promo.jpg" alt="" />
+    </div>
 </div>
+
+
 
 
 @if ((ViewData["result"] != null) && ((int)ViewData["result"] == 1))

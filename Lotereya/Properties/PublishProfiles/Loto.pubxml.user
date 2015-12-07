@@ -14,7 +14,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2015 17:14:20</publishTime>
     </File>
     <File Include="bin/DataBaseLayer.dll">
-      <publishTime>11/30/2015 17:16:52</publishTime>
+      <publishTime>12/07/2015 17:15:40</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>11/30/2015 17:14:20</publishTime>
@@ -23,7 +23,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2015 17:14:20</publishTime>
     </File>
     <File Include="bin/Lotereya.dll">
-      <publishTime>12/01/2015 15:35:03</publishTime>
+      <publishTime>12/07/2015 17:15:44</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.SignalR.Core.dll">
       <publishTime>11/30/2015 17:14:21</publishTime>
@@ -73,8 +73,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/WebGrease.dll">
       <publishTime>11/30/2015 17:14:21</publishTime>
     </File>
+    <File Include="Content/assets/css/admin.css">
+      <publishTime>12/07/2015 16:53:43</publishTime>
+    </File>
+    <File Include="Content/assets/css/admin.scss">
+      <publishTime>12/07/2015 16:14:58</publishTime>
+    </File>
     <File Include="Content/assets/css/helpers.scss">
-      <publishTime>12/01/2015 12:58:28</publishTime>
+      <publishTime>12/07/2015 16:53:41</publishTime>
     </File>
     <File Include="Content/assets/css/mixins.scss">
       <publishTime>11/30/2015 18:45:49</publishTime>
@@ -83,10 +89,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2015 18:45:49</publishTime>
     </File>
     <File Include="Content/assets/css/style.css">
-      <publishTime>12/01/2015 13:02:50</publishTime>
+      <publishTime>12/07/2015 16:59:39</publishTime>
     </File>
     <File Include="Content/assets/css/style.scss">
-      <publishTime>12/01/2015 13:02:49</publishTime>
+      <publishTime>12/07/2015 16:59:38</publishTime>
     </File>
     <File Include="Content/assets/fonts/fonts.css">
       <publishTime>11/30/2015 18:45:49</publishTime>
@@ -146,16 +152,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2015 18:45:49</publishTime>
     </File>
     <File Include="Content/assets/images/circle.png">
-      <publishTime>12/01/2015 11:38:20</publishTime>
+      <publishTime>01/12/2015 11:38:20</publishTime>
     </File>
     <File Include="Content/assets/images/frm_bg.png">
-      <publishTime>12/01/2015 12:47:57</publishTime>
+      <publishTime>01/12/2015 12:47:57</publishTime>
     </File>
     <File Include="Content/assets/images/icon_cubic.png">
       <publishTime>11/30/2015 18:45:49</publishTime>
     </File>
     <File Include="Content/assets/images/icon_lenta.png">
       <publishTime>11/30/2015 18:45:49</publishTime>
+    </File>
+    <File Include="Content/assets/images/icon_login.png">
+      <publishTime>09/17/2014 00:39:46</publishTime>
+    </File>
+    <File Include="Content/assets/js/admin.js">
+      <publishTime>12/07/2015 11:13:57</publishTime>
     </File>
     <File Include="Content/assets/js/default.js">
       <publishTime>11/30/2015 18:45:49</publishTime>
@@ -314,43 +326,43 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2015 18:45:49</publishTime>
     </File>
     <File Include="Content/assets/plugins/progressbar/progressbar.min.js">
-      <publishTime>12/01/2015 09:58:15</publishTime>
+      <publishTime>01/12/2015 09:58:15</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/ajax-loader.gif">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/config.rb">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/fonts/slick.eot">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/fonts/slick.svg">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/fonts/slick.ttf">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/fonts/slick.woff">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/slick-theme.css">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/slick-theme.scss">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/slick.css">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/slick.js">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/slick.min.js">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/slick/slick.scss">
-      <publishTime>07/11/2015 05:03:22</publishTime>
+      <publishTime>11/07/2015 05:03:22</publishTime>
     </File>
     <File Include="Content/assets/plugins/soon-countdown/css/soon.min.css">
       <publishTime>11/30/2015 18:45:49</publishTime>
@@ -371,7 +383,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/30/2015 18:49:28</publishTime>
     </File>
     <File Include="Content/index.html">
-      <publishTime>12/01/2015 14:03:58</publishTime>
+      <publishTime>01/12/2015 14:03:58</publishTime>
     </File>
     <File Include="Content/Site.css">
       <publishTime>11/30/2015 18:45:49</publishTime>
@@ -436,35 +448,50 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/_references.js">
       <publishTime>11/30/2015 17:14:18</publishTime>
     </File>
+    <File Include="Views/Admin/ArticleEditPartial.cshtml">
+      <publishTime>12/07/2015 16:35:32</publishTime>
+    </File>
+    <File Include="Views/Admin/ArticlePartial.cshtml">
+      <publishTime>12/07/2015 16:29:02</publishTime>
+    </File>
     <File Include="Views/Admin/LotterPartial.cshtml">
-      <publishTime>11/30/2015 17:14:18</publishTime>
+      <publishTime>12/07/2015 11:53:11</publishTime>
     </File>
     <File Include="Views/Admin/Settings.cshtml">
-      <publishTime>11/30/2015 17:14:18</publishTime>
+      <publishTime>12/07/2015 16:30:26</publishTime>
+    </File>
+    <File Include="Views/Admin/Winners.cshtml">
+      <publishTime>12/07/2015 16:32:13</publishTime>
+    </File>
+    <File Include="Views/Admin/WinnersPartial.cshtml">
+      <publishTime>12/07/2015 16:23:06</publishTime>
     </File>
     <File Include="Views/Home/GamePartial.cshtml">
-      <publishTime>12/01/2015 14:09:52</publishTime>
+      <publishTime>12/07/2015 16:45:59</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/01/2015 15:17:33</publishTime>
+      <publishTime>12/07/2015 17:13:47</publishTime>
     </File>
     <File Include="Views/Home/PriceElementsPartial.cshtml">
       <publishTime>11/30/2015 17:14:19</publishTime>
     </File>
     <File Include="Views/Home/ResultPartial.cshtml">
-      <publishTime>12/01/2015 15:33:12</publishTime>
+      <publishTime>12/07/2015 16:46:27</publishTime>
     </File>
     <File Include="Views/Home/SelectedElementsPartial.cshtml">
       <publishTime>11/30/2015 17:14:19</publishTime>
     </File>
     <File Include="Views/Home/WorkFieldPartial.cshtml">
-      <publishTime>12/01/2015 14:54:53</publishTime>
+      <publishTime>12/07/2015 16:52:54</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>11/30/2015 17:14:19</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/01/2015 13:56:57</publishTime>
+      <publishTime>12/07/2015 16:39:26</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutAdmin.cshtml">
+      <publishTime>12/07/2015 16:19:26</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>11/30/2015 17:14:19</publishTime>

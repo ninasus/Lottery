@@ -1,17 +1,16 @@
 ﻿@model int
 
-@using (Ajax.BeginForm("Lotter", "Admin", new AjaxOptions { UpdateTargetId = "lotterDiv", InsertionMode= InsertionMode.Replace }))
+@using (Ajax.BeginForm("Lotter", "Admin", new AjaxOptions { UpdateTargetId = "lotterDiv", InsertionMode = InsertionMode.Replace }))
 {
-    @Model
     
     if (Lotereya.Models.LotTimer.IsStoped())
     {
-        <div>Лотерея не запущена</div>
-        <input type="submit" value="Старт" />
+    <div class="alert alert-danger">Лотерея не запущена</div>
+    <input type="submit" value="Старт" class="btn btn-danger" />
     }
     else
     {
-        <div>Лотерея запущена</div>
-        <input type="submit" value="Стоп" />
+    <div class="alert alert-success">Лотерея запущена</div>
+    <input type="submit" value="Стоп" class="btn btn-success" />
     }
 }

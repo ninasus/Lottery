@@ -17,5 +17,48 @@
   </EntityType>
   <EntityContainer Name="LoterejaEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="settings" EntityType="Self.setting" />
+    <FunctionImport Name="create_draw" ReturnType="Collection(LoterejaModel.create_draw_Result)">
+      <Parameter Name="default_JackPot" Mode="In" Type="Int32" />
+      <Parameter Name="stepJackPot" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="drawings" EntityType="LoterejaModel.drawing" />
+    <EntitySet Name="winners" EntityType="LoterejaModel.winner" />
+    <EntitySet Name="articles" EntityType="LoterejaModel.article" />
   </EntityContainer>
+  <EntityType Name="drawing">
+    <Key>
+      <PropertyRef Name="id_draw" />
+    </Key>
+    <Property Name="id_draw" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="result" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="count_winner" Type="Int32" />
+    <Property Name="JackPot" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <ComplexType Name="create_draw_Result">
+    <Property Type="Decimal" Name="id_draw" Nullable="true" Precision="38" Scale="0" />
+    <Property Type="Int32" Name="JackPot" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="winner">
+    <Key>
+      <PropertyRef Name="id_winner" />
+    </Key>
+    <Property Name="id_winner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="elements" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_draw" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="article">
+    <Key>
+      <PropertyRef Name="id_article" />
+    </Key>
+    <Property Name="id_article" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JackPot" Type="Int32" Nullable="false" />
+    <Property Name="place" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
 </Schema>

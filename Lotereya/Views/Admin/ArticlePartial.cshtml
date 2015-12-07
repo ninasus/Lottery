@@ -1,61 +1,69 @@
 ﻿@model List<Lotereya.Models.article>
 
-<div id="bthInsert" class="btn btn-default">
-    Добавить новую запись
-</div>
-
-<div class="article-edit-part">
-
-</div>
-
-@if ((Model != null)&&(Model.Count>0))
-{
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(model => model[0].place)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].JackPot)
-            </td>
-            <td>
-                @Html.LabelFor(model => model[0].date)
-            </td>
-            <td>
-                
-            </td>
-            <td>
-               
-            </td>
-        </tr>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @item.place
-                </td>
-                <td>
-                    @item.JackPot
-                </td>
-                <td>
-                    @item.date.ToShortDateString()
-                </td>
-                <td>
-                    <div data-id="@item.id_article" id="bthEdit" class="btn btn-default">Редактировать</div>
-                </td>
-                <td>
-                    <div data-id="@item.id_article" id="btnDelete" class="btn btn-default">Удалить</div>
-                </td>
-            </tr>
-        }
-    </table>
-}
-else
-{
-    <div class="alert alert-info">
-       Записи отсутствуют
+<div class="panel panel-default">
+    <div class="panel-heading clearfix">
+        <button id="bthInsert" class="btn btn-primary btn-sm pull-right">
+            Добавить
+        </button>
+        История победителей 
     </div>
-}
+    <div class="panel-body">
+
+        <div class="article-edit-part">
+        </div>
+
+        @if ((Model != null) && (Model.Count > 0))
+        {
+            <table class="table">
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model[0].place)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].JackPot)
+                    </td>
+                    <td>
+                        @Html.LabelFor(model => model[0].date)
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.place
+                        </td>
+                        <td>
+                            @item.JackPot
+                        </td>
+                        <td>
+                            @item.date.ToShortDateString()
+                        </td>
+                        <td style="width: 80px">
+                            <button data-id="@item.id_article" id="bthEdit" class="btn btn-default btn-sm">
+                                <i class="fa fa-edit"></i>
+                                Редактировать
+                            </button>
+                        </td>
+                        <td style="width: 60px">
+                            <button data-id="@item.id_article" id="btnDelete" class="btn btn-danger btn-xs">
+                                <i class="fa fa-remove"></i>
+                                Удалить
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                Записи отсутствуют
+            </div>
+        }
+    </div>
+</div>
 
 <script>
     $(function () {
