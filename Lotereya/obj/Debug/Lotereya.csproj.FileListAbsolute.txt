@@ -371,3 +371,13 @@ E:\Projects\Lottereya\Lottery2\Lotereya\bin\Antlr3.Runtime.pdb
 E:\Projects\Lottereya\Lottery2\Lotereya\obj\Debug\Lotereya.csprojResolveAssemblyReference.cache
 E:\Projects\Lottereya\Lottery2\Lotereya\obj\Debug\Lotereya.dll
 E:\Projects\Lottereya\Lottery2\Lotereya\obj\Debug\Lotereya.pdb
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.Owin.Security.OAuth.xml

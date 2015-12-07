@@ -1,0 +1,27 @@
+﻿@model Lotereya.Models.LoginModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary()
+        <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+        <p>
+            @Html.LabelFor(x=>x.Login)<br />
+            @Html.EditorFor(x => x.Login)
+        </p>
+        <p>
+            @Html.LabelFor(x => x.Password)<br />
+            @Html.EditorFor(x => x.Password)
+        </p>
+        <p><button type="submit">Войти</button></p>
+    </div>
+}

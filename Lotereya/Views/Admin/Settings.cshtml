@@ -15,6 +15,20 @@
     @ViewData["Info"]
 }
 
+
+@using (Html.BeginForm("LogOff", "Admin", FormMethod.Post, new { id = "logoutForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <a href="javascript:document.getElementById('logoutForm').submit()">
+        <i class="fa fa-sign-out"></i>
+       Выход
+    </a>
+}
+
+
+
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
