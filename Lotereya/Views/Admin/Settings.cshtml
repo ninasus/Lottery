@@ -20,6 +20,7 @@
         @ViewData["Info"]
     </div>
 }
+<<<<<<< HEAD
 <div class="row">
     <div class="col-sm-5">
         <div class="panel panel-default">
@@ -28,6 +29,82 @@
                 <div id="lotterDiv">
                     @Html.Partial("LotterPartial", 0)
                 </div>
+=======
+
+
+@using (Html.BeginForm("LogOff", "Admin", FormMethod.Post, new { id = "logoutForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <a href="javascript:document.getElementById('logoutForm').submit()">
+        <i class="fa fa-sign-out"></i>
+       Выход
+    </a>
+}
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>settings</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+
+        @Html.HiddenFor(model => model.id_settings)
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.timeBeforeDraw, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.timeBeforeDraw)
+                @Html.ValidationMessageFor(model => model.timeBeforeDraw)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.timeDraw, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.timeDraw)
+                @Html.ValidationMessageFor(model => model.timeDraw)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.timeAfterDraw, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.timeAfterDraw)
+                @Html.ValidationMessageFor(model => model.timeAfterDraw)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.minValue, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.minValue)
+                @Html.ValidationMessageFor(model => model.minValue)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.maxValue, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.maxValue)
+                @Html.ValidationMessageFor(model => model.maxValue)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.minJackPot, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.minJackPot)
+                @Html.ValidationMessageFor(model => model.minJackPot)
+>>>>>>> 80d467a7df488a6d504f5ef705530093d14235b4
             </div>
         </div>
     </div>
