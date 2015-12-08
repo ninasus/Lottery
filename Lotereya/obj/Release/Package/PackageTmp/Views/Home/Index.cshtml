@@ -30,7 +30,6 @@
 </div>
 
 @section scripts {
-    @Scripts.Render("~/bundles/jqueryval")
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
@@ -60,7 +59,7 @@
             chat.client.SendCount = function (count) {
                 $('.now_play').empty().append(count);
             }
-                       
+
             chat.client.endDraw = function (){
                 location.reload();
             }
@@ -87,12 +86,12 @@
                 if ($('#waiting').length > 0)
                 {
                     var elements = $("#priceElements .elementSel");
-                    
+
                     $("#field").load("/Home/ResultPartial?thereWinners=" + thereWinners + "&isWinner=" + isWinner, function() {
                         var form = $(".price-form");
-                        
+
                         $('#modal_winner').modal('show');
-                        
+
                         if(form.length > 0)
                         {
                             form.find("#id_draw").val(id_draw);
@@ -104,7 +103,7 @@
                             });
                         }
                     });
-                
+
                     $(priceElements).each(function(index,value){
                         $(elements[index]).text(value);
                     });
@@ -125,7 +124,7 @@
                 });*/
             });
 
-            
+
             /*****************************************/
             var request = function(url, params){
                 var result = $.ajax({
@@ -185,7 +184,7 @@
                             cellNumber = cellNumber + 1;
                             $("#selectedElements").find("span:nth-child("+(cellNumber)+")").text($(this).text());
 
-                           
+
                             if((cellNumber==(@Model.countValue))&&(@Convert.ToInt32(Lotereya.Models.LotTimer.IsStoped())==false))
                                 $("#play").removeAttr("disabled").addClass('active');
                         }
@@ -249,4 +248,5 @@
             return encodedValue;
         }
     </script>
+    @Scripts.Render("~/bundles/jqueryval")
 }

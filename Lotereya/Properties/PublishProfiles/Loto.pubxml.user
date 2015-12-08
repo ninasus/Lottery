@@ -533,7 +533,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/08/2015 21:50:20</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>12/09/2015 01:02:49</publishTime>
+      <publishTime>09/12/2015 01:53:25</publishTime>
     </File>
     <File Include="Views/Home/PriceElementsPartial.cshtml">
       <publishTime>12/08/2015 21:50:05</publishTime>
