@@ -23,27 +23,55 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div id="winnerDiv">
-        </div>
-    </div>
-    <div class="col-md-12">
         <div id="articleDiv">
+            @{ Html.RenderAction("ArticlePartial"); }
         </div>
     </div>
 </div>
-@section Scripts {
 
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 
     <script>
         $(function () {
+            var request = function (url, params) {
+                var result = $.ajax({
+                    url: url,
+                    contentType: "application/json; charset=utf-8",
+                    data: params,
+                    type: "GET",
+                    async: false,
+                    success: function (json) {
+                        return json;
+                    }
+                });
 
-            $("#articleDiv").load("/admin/ArticlePartial");
+                return result.responseJSON;
+            };
 
 
-            $("#winnerDiv").load("/admin/WinnersPartial");
+            $('body').on('click', '#bthInsert', function () {
+                $(".article-edit-part").load("/admin/ArticleEditPartial", function () {
+                    $("input[id='id_article']").val(0);
+                });
+            });
 
+            $('body').on('click', '#bthEdit', function () {
+                $(".article-edit-part").load("/admin/ArticleEditPartial?id_article=" + $(this).attr("data-id"));
+            });
 
+            $('body').on('click',  '#btnDelete', function () {
+                if (confirm("Вы уверены, что хотите удалить эту запись?")) {
+                    var data = { id_article: $(this).attr("data-id") };
+                    var result = request("/Admin/articleDelete", data);
+
+                    $("#articleDiv").load("/admin/ArticlePartial");
+                }
+            });
+
+            $('body').on('click', '#btnCancel', function () {
+                $("#holder").css("display", "none");
+            });
         });
     </script>
 }

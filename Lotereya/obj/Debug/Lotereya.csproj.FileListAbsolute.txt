@@ -197,7 +197,6 @@ d:\_Loto\Lottery\Lotereya\bin\System.Web.WebPages.xml
 d:\_Loto\Lottery\Lotereya\bin\System.Web.WebPages.Deployment.xml
 d:\_Loto\Lottery\Lotereya\bin\System.Web.WebPages.Razor.xml
 d:\_Loto\Lottery\Lotereya\bin\Antlr3.Runtime.pdb
-d:\_Loto\Lottery\Lotereya\obj\Debug\Lotereya.csprojResolveAssemblyReference.cache
 d:\_Loto\Lottery\Lotereya\obj\Debug\Lotereya.dll
 d:\_Loto\Lottery\Lotereya\obj\Debug\Lotereya.pdb
 E:\_loto\Lottery\Lotereya\bin\Lotereya.dll
@@ -381,3 +380,14 @@ E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.EntityFram
 E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.AspNet.Identity.Owin.xml
 E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.Owin.Security.Cookies.xml
 E:\Projects\Lottereya\Lottery2\Lotereya\bin\Microsoft.Owin.Security.OAuth.xml
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Core.dll
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.Cookies.dll
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.OAuth.dll
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Core.xml
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.Cookies.xml
+D:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.OAuth.xml
+d:\_Loto\Lottery\Lotereya\obj\Debug\Lotereya.csprojResolveAssemblyReference.cache

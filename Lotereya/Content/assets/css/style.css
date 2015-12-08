@@ -501,3 +501,29 @@ body {
   display: none; }
   .gotop:hover {
     opacity: 0.8; }
+
+.loading {
+  width: 32px;
+  height: 32px;
+  background: url(../images/loading.gif) 0 0 no-repeat;
+  display: block;
+  margin: 20px 0 0 0; }
+
+.frm.sending {
+  position: relative; }
+.frm .loading {
+  bottom: -40px;
+  left: 50%;
+  margin-left: -16px;
+  position: absolute;
+  z-index: 101; }
+.frm .alert {
+  margin-top: 10px; }
+.frm .field-validation-error {
+  display: none; }
+.frm .input-validation-error {
+  background: #dca7a7 !important; }
+.frm .alert {
+  font-size: 13px; }
+  .frm .alert .close {
+    margin: -15px -10px 0 0; }

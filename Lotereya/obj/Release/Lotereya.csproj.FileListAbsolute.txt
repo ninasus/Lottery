@@ -83,3 +83,13 @@ E:\_loto\Lottery\Lotereya\bin\Antlr3.Runtime.pdb
 E:\_loto\Lottery\Lotereya\obj\Release\Lotereya.csprojResolveAssemblyReference.cache
 E:\_loto\Lottery\Lotereya\obj\Release\Lotereya.dll
 E:\_loto\Lottery\Lotereya\obj\Release\Lotereya.pdb
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Core.dll
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Owin.dll
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.Cookies.dll
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.OAuth.dll
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Core.xml
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Owin.xml
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.Cookies.xml
+d:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.OAuth.xml

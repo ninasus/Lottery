@@ -1,0 +1,44 @@
+﻿@model Lotereya.Models.HomeLetterViewModel
+
+<div class="modal fade modal_frm" id="modal_letter" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <a href="#" class="btn-close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></a>
+            <div class="modal-heading">
+                Форма обратной связи
+            </div>
+
+            @using (Ajax.BeginForm("HomeLetter", "ContactForms",
+            new AjaxOptions { HttpMethod = "Post", OnBegin = "ContactFormBegin", OnFailure = "ContactFormFailure", OnSuccess = "ContactFormSuccess" },
+            new { enctype = "multipart/form-data", @class = "frm form-horizontal", role = "form", @id = "LetterFrm" }))
+            {
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        @Html.LabelFor(model => model.Name)
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        @Html.LabelFor(model => model.Email)
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        @Html.LabelFor(model => model.Message)
+                        @Html.TextAreaFor(model => model.Message, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group form-bot">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-default frm-submit">Отправить</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>	

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Lotereya.Models;
+using System.IO;
+using Lotereya.Helpers;
 
 namespace Lotereya.Controllers
 {
@@ -38,35 +40,57 @@ namespace Lotereya.Controllers
             return PartialView();
         }
 
+        [HttpPost]
         public ActionResult Winner(Winner model)
         {
-            string ip = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-            if (ip == null)
-                ip = Request.ServerVariables["REMOTE_ADDR"];
-
-            if (ip == null)
-                ip = Request.UserHostAddress;
-
-            string elements = "";
-            if (Session["elements"] != null)
+            if (ModelState.IsValid)
             {
-                int[] array = (int[])Session["elements"];
+                string ip = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
 
-                foreach (int i in array)
+                if (ip == null)
+                    ip = Request.ServerVariables["REMOTE_ADDR"];
+
+                if (ip == null)
+                    ip = Request.UserHostAddress;
+
+                string elements = "";
+                if (Session["elements"] != null)
                 {
-                    elements = elements + i + ",";
+                    int[] array = (int[])Session["elements"];
+
+                    foreach (int i in array)
+                    {
+                        elements = elements + i + ",";
+                    }
+                    elements.Trim().Trim(',');
                 }
-                elements.Trim().Trim(',');
+                else
+                    elements = "Игра в несколько окон";
+
+
+                model.Save(ip, elements);
+
+                try
+                {
+                    string messageBody;
+                    using (var sr = new StreamReader(Server.MapPath("\\Views\\Shared\\EmailTemplate\\") + "WinnerEmail.cshtml"))
+                    {
+                        messageBody = sr.ReadToEnd();
+                    }
+                    messageBody = string.Format(messageBody, model.id_draw, model.name, model.email, model.phone);
+
+                    CoreHelper.SendMail(null, "pfree-online-lottery.com", null, null, "Новый победитель", messageBody);
+
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, Message = "<div class=\"alert alert-warning\"><button class=\"close\" data-dismiss=\"alert\"> × </button> <i class=\"fa fa-times-circle\"></i> <strong>Ошибка!</strong>  Не удалось отправить письмо.<br/>" + ex.Message + "</div>" });
+                }
+
+                return Json(new { success = true, Message = "<div class=\"alert alert-success\"><button class=\"close\" data-dismiss=\"alert\"> × </button> <i class=\"fa fa-times-circle\"></i> <strong>Отправлено!</strong>  Спасибо, Ваше сообщение отпревлено.</div>" });
             }
-            else
-                elements = "Игра в несколько окон";
-
-
-            model.Save(ip, elements);
-
-
-            return RedirectPermanent("/");
+            return Json(new { success = false, Message = "<div class=\"alert alert-danger\"><button class=\"close\" data-dismiss=\"alert\"> × </button> <i class=\"fa fa-times-circle\"></i> <strong>Ошибка!</strong>  Форма заполнена не корректно.</div>" });
+            
         }
 
         public JsonResult AddElement(int element, int number, int count)

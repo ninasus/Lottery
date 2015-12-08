@@ -158,14 +158,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Binders\ArticleBinder.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ContactForms.cs" />
     <Compile Include="Controllers\CustomController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CoreHelper.cs" />
     <Compile Include="Hubs\Timing.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\article.cs" />
+    <Compile Include="Models\ContactForms.cs" />
     <Compile Include="Models\CustomTimer.cs" />
     <Compile Include="Models\Draw.cs" />
     <Compile Include="Models\ErrorCatcher.cs" />
@@ -201,12 +204,15 @@
     <Content Include="Content\assets\fonts\yyxjoh7z-webfont.woff2" />
     <Content Include="Content\assets\images\award.png" />
     <Content Include="Content\assets\images\balls.png" />
+    <Content Include="Content\assets\images\bg.png" />
     <Content Include="Content\assets\images\bg_line.png" />
     <Content Include="Content\assets\images\circle.png" />
+    <Content Include="Content\assets\images\favicon.ico" />
     <Content Include="Content\assets\images\frm_bg.png" />
     <Content Include="Content\assets\images\icon_cubic.png" />
     <Content Include="Content\assets\images\icon_lenta.png" />
     <Content Include="Content\assets\images\icon_login.png" />
+    <Content Include="Content\assets\images\loading.gif" />
     <Content Include="Content\assets\js\admin.js" />
     <Content Include="Content\assets\js\default.js" />
     <Content Include="Content\assets\js\jquery-1.11.3.min.js" />
@@ -295,6 +301,11 @@
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -322,13 +333,21 @@
     <Content Include="Views\Admin\WinnersPartial.cshtml" />
     <Content Include="Views\Admin\ArticlePartial.cshtml" />
     <Content Include="Views\Admin\ArticleEditPartial.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\Winners.cshtml" />
-=======
     <Content Include="Views\Admin\Register.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
->>>>>>> 80d467a7df488a6d504f5ef705530093d14235b4
+    <Content Include="Views\Admin\ForgotPassword.cshtml" />
+    <Content Include="Views\Shared\_LayoutAccount.cshtml" />
+    <Content Include="Views\Admin\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Admin\ResetPassword.cshtml" />
+    <Content Include="Views\Admin\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Shared\LoginPartial.cshtml" />
+    <Content Include="Views\Admin\UserProfile.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\ContactForms\HomeLetter.cshtml" />
+    <Content Include="Views\Shared\EmailTemplate\HomeLetterEmail.cshtml" />
+    <Content Include="Views\Shared\EmailTemplate\WinnerEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseLayer\DataBaseLayer.csproj">

@@ -1,0 +1,29 @@
+﻿@model Lotereya.Models.settings
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Настройки";
+}
+
+<h2>Консоль</h2>
+<hr />
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData["Error"]
+    </div>
+}
+
+@if (ViewData["Info"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["Info"]
+    </div>
+}
+<div class="row">
+    <div class="col-sm-12">
+        @{
+            Html.RenderAction("WinnersPartial");
+        }
+    </div>
+</div>

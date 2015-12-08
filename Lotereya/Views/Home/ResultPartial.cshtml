@@ -36,9 +36,11 @@
                 <a href="#" class="btn-close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></a>
                 <div class="modal-heading">
                     Поздравляем Вы выиграли джекпот
-					    <p>Заполните форму чтобы получить приз</p>
+                    <p>Заполните форму чтобы получить приз</p>
                 </div>
-                @using (Html.BeginForm("Winner", "Home", FormMethod.Post, new { @class = "form-horizontal price-form" }))
+                @using (Ajax.BeginForm("Winner", "Home",
+                    new AjaxOptions { HttpMethod = "Post", OnBegin = "ContactFormBegin", OnFailure = "ContactFormFailure", OnSuccess = "ContactFormSuccess" },
+                    new { enctype = "multipart/form-data", @class = "frm form-horizontal", role = "form", @id = "WinnerFrm" }))
                 {
                     @Html.HiddenFor(model => model.id_draw)
                     <div class="form-group">
@@ -72,3 +74,8 @@
         </div>
     </div>
 }
+
+
+<script>
+    $.validator.unobtrusive.parse(document);
+</script>

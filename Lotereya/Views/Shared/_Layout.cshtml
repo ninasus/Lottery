@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 
+    <link rel="shortcut icon" href="~/Content/assets/images/favicon.ico" />
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -33,71 +33,71 @@
             </div>
         </div>
     </div>
-	<div id="history">
-		<div class="heading">
-			<div class="container">
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#year2015" data-toggle="tab">2015</a></li>
-					<li><a href="#year2014" data-toggle="tab">2014</a></li>
-					<li><a href="#year2013"  data-toggle="tab">2013</a></li>
-					<li><a href="#year2012" data-toggle="tab">2012</a></li>
-				</ul>
-				<i class="icon icon-lenta"></i>
-				История выигрышей
-			</div>
-		</div>
-		<div class="line"></div>
-		<div class="container">
-			<div class="tab-content">
-				<div class="tab-pane active" id="year2015">
-					<ul class="winners">
-						<li>
-							<div class="award">
-								44 512$
-							</div>
-							<div class="info">
-								<p>11.05.2015</p>
-								Украина г.Киев
-							</div>
-						</li>
-						<li>
-							<div class="award">
-								512$
-							</div>
-							<div class="info">
-								<p>11.05.2015</p>
-								Украина г.Киев
-							</div>
-						</li>
-						<li>
-							<div class="award">
-								404 512$
-							</div>
-							<div class="info">
-								<p>11.05.2015</p>
-								Украина г.Киев
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="tab-pane" id="year2014">
-					<div class="alert alert-info">
-						<b>Нет победителей!</b>
-					</div>
-				</div>
-				<div class="tab-pane" id="year2013">
-					<div class="alert alert-info">
-						<b>Нет победителей!</b>
-					</div>
-				</div>
-				<div class="tab-pane" id="year2012">
-					<div class="alert alert-info">
-						<b>Нет победителей!</b>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div id="history">
+        <div class="heading">
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#year2015" data-toggle="tab">2015</a></li>
+                    <li><a href="#year2014" data-toggle="tab">2014</a></li>
+                    <li><a href="#year2013" data-toggle="tab">2013</a></li>
+                    <li><a href="#year2012" data-toggle="tab">2012</a></li>
+                </ul>
+                <i class="icon icon-lenta"></i>
+                История выигрышей
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="container">
+            <div class="tab-content">
+                <div class="tab-pane active" id="year2015">
+                    <ul class="winners">
+                        <li>
+                            <div class="award">
+                                44 512$
+                            </div>
+                            <div class="info">
+                                <p>11.05.2015</p>
+                                Украина г.Киев
+                            </div>
+                        </li>
+                        <li>
+                            <div class="award">
+                                512$
+                            </div>
+                            <div class="info">
+                                <p>11.05.2015</p>
+                                Украина г.Киев
+                            </div>
+                        </li>
+                        <li>
+                            <div class="award">
+                                404 512$
+                            </div>
+                            <div class="info">
+                                <p>11.05.2015</p>
+                                Украина г.Киев
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane" id="year2014">
+                    <div class="alert alert-info">
+                        <b>Нет победителей!</b>
+                    </div>
+                </div>
+                <div class="tab-pane" id="year2013">
+                    <div class="alert alert-info">
+                        <b>Нет победителей!</b>
+                    </div>
+                </div>
+                <div class="tab-pane" id="year2012">
+                    <div class="alert alert-info">
+                        <b>Нет победителей!</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -114,42 +114,12 @@
             </div>
         </div>
     </footer>
-    <div class="modal fade modal_frm" id="modal_letter" tabindex="-1" role="dialog" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<a href="#" class="btn-close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-close"></i></a>
-				<div class="modal-heading">
-					Форма обратной связи
-				</div>
-				<form action="#" class="form-horizontal">
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label>Ваше имя</label>
-							<input class="form-control input-name" type="text"  name="your-name">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label>Ваш e-mail</label>
-							<input class="form-control input-email" type="email" name="your-email">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-xs-12">
-							<label>Сообщение</label>
-							<textarea class="form-control" name="textarea-review"></textarea>
-						</div>
-					</div>
-					<div class="form-group form-bot">
-						<div class="col-xs-12">
-							<button class="btn btn-default frm-submit" type="submit">Отправить</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>	
+    @{
+        Html.RenderAction("HomeLetter", "ContactForms");
+    }
+
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
     @Scripts.Render("~/bundles/bootstrap")
 
     <script src="~/Content/assets/plugins/slick/slick.min.js"></script>

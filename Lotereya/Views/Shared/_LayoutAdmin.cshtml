@@ -7,6 +7,7 @@
 
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
+    <link rel="shortcut icon" href="~/Content/assets/images/favicon.ico" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -16,42 +17,21 @@
 <body>
     <header id="header">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Akon
-                        <i class="fa fa-paperclip"></i>
-                CMS
+            <a class="navbar-brand" href="/">
+                Akon<i class="fa fa-paperclip"></i>CMS
             </a>
         </div>
-        <div class="navbar-tools">
-            <ul class="nav">
-                <li class="dropdown current-user">
-                    <form id="logoutForm" method="post" action="/Account/LogOff" class="">
-                        <a class="dropdown-toggle" href="#" data-close-others="true" data-hover="dropdown" data-toggle="dropdown">
-                            <img class="circle-img" alt="" src="/Content/assets/images/icon_login.png">
-                            <span class="username">akon</span>
-                            <i class="fa fa-angle-down"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="/Admin/Manage">
-                                    <i class="fa fa-android"></i>
-                                    Мой профиль
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:document.getElementById('logoutForm').submit()">
-                                    <i class="fa fa-sign-out"></i>
-                                    Выйти
-                                </a>
-                            </li>
-                        </ul>
-                    </form>
-                </li>
-            </ul>
-        </div>
+        @Html.Partial("LoginPartial")
     </header>
     <div id="main">
         <aside>
             <ul class="main-navigation-menu">
+                <li class="" data-cur-url="/admin" data-url="/admin">
+                    <a href="/admin">
+                        <i class="fa fa-home"></i>
+                        <span class="title">Консоль</span>
+                    </a>
+                </li>
                 <li class="" data-cur-url="/admin/settings" data-url="/admin/settings">
                     <a href="/admin/settings">
                         <i class="fa fa-cog"></i>
@@ -76,6 +56,7 @@
         </div>
     </footer>
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryunobtrusiveajax")
     @Scripts.Render("~/bundles/bootstrap")
 
     <script src="~/Content/assets/js/admin.js"></script>

@@ -11,12 +11,16 @@ namespace Lotereya.Models
         [Required]
         [Display(Name = "Номер розыгрыша")]
         public int id_draw { get; set; }
+
         [Required]
         [Display(Name = "Ф.И.О.")]
         public string name { get; set; }
+
         [Required]
+        [EmailAddress]
         [Display(Name = "Email")]
         public string email { get; set; }
+
         [Required]
         [Display(Name = "Телефон")]
         public string phone { get; set; }
