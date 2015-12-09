@@ -44,5 +44,10 @@ namespace DataBaseLayer
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<create_draw_Result>("create_draw", default_JackPotParameter, stepJackPotParameter);
         }
+    
+        public virtual ObjectResult<get_history_Result> get_history()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<get_history_Result>("get_history");
+        }
     }
 }

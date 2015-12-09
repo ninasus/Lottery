@@ -29,6 +29,26 @@
     </div>
 </div>
 
+
+<div id="rules">
+    <div class="container">
+        <div class="heading">
+            <i class="icon icon-cubic"></i>
+            Правила игры
+        </div>
+        <div class="post">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero.</p>
+        </div>
+    </div>
+</div>
+
+
+<div id="history">
+</div>
+
+
+
 @section scripts {
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
@@ -37,6 +57,10 @@
         $(function () {
             $("#reset").attr("disabled", true).removeClass('active');
             $("#play").attr("disabled", true).removeClass('active');
+            $("#history").load("/Home/HistoryPartial");
+
+
+
             var chat = $.connection.timing;
 
             chat.client.secondIs = function (type,tick) {

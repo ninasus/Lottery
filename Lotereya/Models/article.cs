@@ -91,4 +91,29 @@ namespace Lotereya.Models
             }
         }
     }
+
+    public class articleView
+    {
+        public int id_article { get; set; }
+              
+        public string place { get; set; }
+        
+        public int JackPot { get; set; }
+        
+        public DateTime date { get; set; }
+
+        public int year { get; set; }
+
+        public static List<articleView> Get()
+        {
+            List<articleView> model = null;
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+            {
+                model = dbc.get_history().Select(item => new articleView() { id_article = item.id_article, date = item.date, JackPot = item.JackPot, place = item.place, year = item.year }).ToList();
+            }
+
+            return model;
+        }
+    }
+    
 }

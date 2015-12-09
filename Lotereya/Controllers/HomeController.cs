@@ -11,12 +11,19 @@ namespace Lotereya.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             settings model = settings.Get();
             Session["elements"] = null;
 
             return View(model);
+        }
+
+        public ActionResult HistoryPartial()
+        {
+            var model = articleView.Get();
+            return PartialView(model);
         }
 
         public ActionResult GamePartial()
