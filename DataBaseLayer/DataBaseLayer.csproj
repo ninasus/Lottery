@@ -73,6 +73,9 @@
     <Compile Include="drawing.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="option.cs">
+      <DependentUpon>Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="setting.cs">
       <DependentUpon>Data.tt</DependentUpon>

@@ -169,3 +169,38 @@ footer {
     padding: 0;
   }
 }
+
+
+.loading {
+  width: 32px;
+  height: 32px;
+  background: url(../images/loading.gif) 0 0 no-repeat;
+  display:block;
+  margin: 20px 0 0 0;
+}
+.frm {
+  &.sending {
+    position:relative;
+  }
+  .loading {
+    right: -20px;
+    top: -65px;
+    position: absolute;
+    z-index: 101;
+  }
+  .alert {
+    margin-top:10px;
+  }
+  .field-validation-error {
+    display:none;
+  }
+  .input-validation-error {
+    background:#dca7a7 !important;
+  }
+  .alert {
+    font-size:13px;
+    .close {
+      margin: -15px -10px 0 0;
+    }
+  }
+}

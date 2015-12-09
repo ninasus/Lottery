@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="col-xs-8 text-right">
-        <img src="~/Content/demo/promo.jpg" alt="" />
+        @{Html.RenderAction("OptionPartial", "Home", new { id = 2 });}
     </div>
 </div>
 

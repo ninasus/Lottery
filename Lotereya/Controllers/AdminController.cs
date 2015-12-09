@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 using Lotereya.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
 using System.Security.Claims;
+using System.Data.Entity;
 
 namespace Lotereya.Controllers
 {
@@ -347,6 +347,62 @@ namespace Lotereya.Controllers
         public ActionResult Setup()
         {
             return View();
+        }
+
+        public ActionResult OptionsList(string grupa)
+        {
+            List<OptionsViewModel> fields = null;
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+            {
+                fields = (from g in dbc.options
+                          where g.option_group == grupa
+                          select new OptionsViewModel
+                          {
+                              id_option = g.id_option,
+                              option_group = g.option_group,
+                              option_key = g.option_key,
+                              value = g.value,
+                              field_type = g.field_type,
+                              option_name = g.option_name
+                          }).ToList();
+            }
+
+            return PartialView(fields);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public async Task<ActionResult> UpdateOption(string grupa, IEnumerable<OptionsViewModel> fields)
+        {
+            try
+            {
+                using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+                {
+                    if (fields != null)
+                    {
+                        foreach (var f in fields)
+                        {
+                            var result = from opt in dbc.options
+                                         where (opt.option_group == grupa && opt.id_option == f.id_option)
+                                         select opt;
+
+                            if (result.Count() != 0)
+                            {
+                                var item = await result.FirstOrDefaultAsync();
+                                item.value = f.value;
+                            }
+
+                            await dbc.SaveChangesAsync();
+                        }
+                    }                    
+                }
+                return Json(new { success = true, Message = "<div class=\"alert alert-success\"><button class=\"close\" data-dismiss=\"alert\"> × </button> <i class=\"fa fa-times-circle\"></i> <strong>Сохранено!</strong></div>" });
+            }
+            catch
+            {
+                return Json(new { success = false, Message = "<div class=\"alert alert-danger\"><button class=\"close\" data-dismiss=\"alert\"> × </button> <i class=\"fa fa-times-circle\"></i> <strong>Ошибка!</strong> Форма заполнена не корректно.</div>" });
+            }
         }
     }
 }

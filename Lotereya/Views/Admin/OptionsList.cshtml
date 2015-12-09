@@ -1,0 +1,39 @@
+﻿@model List<Lotereya.Models.OptionsViewModel>
+
+
+@if (Model != null)
+{
+    for (int i = 0; i < Model.Count(); i++)
+    {
+        if (Model[i].field_type == 1)
+        {
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label>@Model[i].option_name</label>
+                    <input type="text" name="fields[@i].value" class="form-control" value="@Model[i].value"   />
+                    <input type="hidden" name="fields[@i].id_option" value="@Model[i].id_option" />
+                </div>
+            </div>                  
+        }
+        else if (Model[i].field_type == 2)
+        {
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label>@Model[i].option_name</label>
+                    <textarea name="fields[@i].value" class="form-control" rows="10">@Model[i].value</textarea>
+                    <input type="hidden" name="fields[@i].id_option" value="@Model[i].id_option" />
+                </div>
+            </div>                  
+        }
+        else if (Model[i].field_type == 3)
+        {
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label>@Model[i].option_name</label>
+                    <textarea name="fields[@i].value" class="form-control ckeditor" rows="10">@Model[i].value</textarea>
+                    <input type="hidden" name="fields[@i].id_option" value="@Model[i].id_option" />
+                </div>
+            </div>                  
+        }
+    }
+}

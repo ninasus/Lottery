@@ -170,6 +170,7 @@
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\article.cs" />
     <Compile Include="Models\ContactForms.cs" />
+    <Compile Include="Models\Options.cs" />
     <Compile Include="Models\CustomTimer.cs" />
     <Compile Include="Models\Draw.cs" />
     <Compile Include="Models\ErrorCatcher.cs" />
@@ -352,6 +353,8 @@
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\NotFoundPage.cshtml" />
     <Content Include="Views\Admin\Setup.cshtml" />
+    <Content Include="Views\Admin\OptionsList.cshtml" />
+    <Content Include="Views\Shared\OptionPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataBaseLayer\DataBaseLayer.csproj">

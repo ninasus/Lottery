@@ -60,5 +60,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="options">
+      <EntityTypeMapping TypeName="LoterejaModel.option">
+        <MappingFragment StoreEntitySet="options">
+          <ScalarProperty Name="option_name" ColumnName="option_name" />
+          <ScalarProperty Name="field_type" ColumnName="field_type" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="option_key" ColumnName="option_key" />
+          <ScalarProperty Name="option_group" ColumnName="option_group" />
+          <ScalarProperty Name="id_option" ColumnName="id_option" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,0 +1,14 @@
+﻿@model Lotereya.Models.OptionsViewModel
+
+
+@if (Model != null)
+{
+    if (Model.field_type == 1)
+    {
+    @(Model.value)
+    }
+    else
+    {
+    @Html.Raw(Model.value.Replace(Environment.NewLine, "<br/>"))                
+    }
+}

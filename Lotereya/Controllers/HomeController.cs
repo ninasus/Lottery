@@ -16,6 +16,29 @@ namespace Lotereya.Controllers
             settings model = settings.Get();
             Session["elements"] = null;
 
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+            {
+                List<OptionsViewModel> fields = (from g in dbc.options
+                          where g.option_group == "4"
+                          select new OptionsViewModel
+                          {
+                              id_option = g.id_option,
+                              option_group = g.option_group,
+                              option_key = g.option_key,
+                              value = g.value,
+                              field_type = g.field_type,
+                              option_name = g.option_name
+                          }).ToList();
+
+                string title = fields.Where(f => f.id_option == 6).FirstOrDefault().ToString();
+                if (!String.IsNullOrEmpty(title))
+                    ViewBag.Title = title;
+                else
+                    ViewBag.Title = "Бесплатная онлайн лотерея";
+                ViewBag.Description = fields.Where(f => f.id_option == 7).FirstOrDefault().ToString();
+                ViewBag.Keywords = fields.Where(f => f.id_option == 8).FirstOrDefault().ToString();
+            }
+
             return View(model);
         }
 
@@ -145,6 +168,27 @@ namespace Lotereya.Controllers
             Session["elements"] = array;
 
             return Json(array, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult OptionPartial(int id)
+        {
+            OptionsViewModel field = null;
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+            {
+                field = (from g in dbc.options
+                         where g.id_option == id
+                          select new OptionsViewModel
+                          {
+                              id_option = g.id_option,
+                              option_group = g.option_group,
+                              option_key = g.option_key,
+                              value = g.value,
+                              field_type = g.field_type,
+                              option_name = g.option_name
+                          }).FirstOrDefault();
+            }
+
+            return PartialView(field);
         }
     }
 }

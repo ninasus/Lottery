@@ -31,6 +31,7 @@ namespace DataBaseLayer
         public virtual DbSet<drawing> drawings { get; set; }
         public virtual DbSet<winner> winners { get; set; }
         public virtual DbSet<article> articles { get; set; }
+        public virtual DbSet<option> options { get; set; }
     
         public virtual ObjectResult<create_draw_Result> create_draw(Nullable<int> default_JackPot, Nullable<int> stepJackPot)
         {

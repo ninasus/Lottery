@@ -24,6 +24,17 @@
           <Property Name="JackPot" Type="int" Nullable="false" />
           <Property Name="date" Type="smalldatetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="options">
+          <Key>
+            <PropertyRef Name="id_option" />
+          </Key>
+          <Property Name="id_option" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="option_group" Type="varchar" MaxLength="50" />
+          <Property Name="option_key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="value" Type="varchar(max)" />
+          <Property Name="field_type" Type="tinyint" />
+          <Property Name="option_name" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="settings">
           <Key>
             <PropertyRef Name="id_settings" />
@@ -59,6 +70,7 @@
         <EntityContainer Name="LoterejaModelStoreContainer">
           <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="drawing" EntityType="Self.drawing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="options" EntityType="Self.options" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="winners" EntityType="Self.winners" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -90,6 +102,7 @@
           <EntitySet Name="drawings" EntityType="LoterejaModel.drawing" />
           <EntitySet Name="winners" EntityType="LoterejaModel.winner" />
           <EntitySet Name="articles" EntityType="LoterejaModel.article" />
+          <EntitySet Name="options" EntityType="LoterejaModel.option" />
         </EntityContainer>
         <EntityType Name="drawing">
           <Key>
@@ -126,6 +139,17 @@
           <Property Name="JackPot" Type="Int32" Nullable="false" />
           <Property Name="place" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="option">
+          <Key>
+            <PropertyRef Name="id_option" />
+          </Key>
+          <Property Name="id_option" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="option_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="option_key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="field_type" Type="Byte" />
+          <Property Name="option_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -189,6 +213,18 @@
                 <ScalarProperty Name="place" ColumnName="place" />
                 <ScalarProperty Name="JackPot" ColumnName="JackPot" />
                 <ScalarProperty Name="id_article" ColumnName="id_article" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="options">
+            <EntityTypeMapping TypeName="LoterejaModel.option">
+              <MappingFragment StoreEntitySet="options">
+                <ScalarProperty Name="option_name" ColumnName="option_name" />
+                <ScalarProperty Name="field_type" ColumnName="field_type" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="option_key" ColumnName="option_key" />
+                <ScalarProperty Name="option_group" ColumnName="option_group" />
+                <ScalarProperty Name="id_option" ColumnName="id_option" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
