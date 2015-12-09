@@ -25,6 +25,7 @@
     <EntitySet Name="winners" EntityType="LoterejaModel.winner" />
     <EntitySet Name="articles" EntityType="LoterejaModel.article" />
     <EntitySet Name="options" EntityType="LoterejaModel.option" />
+    <FunctionImport Name="get_history" ReturnType="Collection(LoterejaModel.get_history_Result)" />
   </EntityContainer>
   <EntityType Name="drawing">
     <Key>
@@ -73,4 +74,11 @@
     <Property Name="field_type" Type="Byte" />
     <Property Name="option_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
   </EntityType>
+  <ComplexType Name="get_history_Result">
+    <Property Type="Int32" Name="id_article" Nullable="false" />
+    <Property Type="Int32" Name="JackPot" Nullable="false" />
+    <Property Type="String" Name="place" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="date" Nullable="false" Precision="16" />
+    <Property Type="Int32" Name="year" Nullable="false" />
+  </ComplexType>
 </Schema>

@@ -15,9 +15,31 @@
 		});
 	};
 
+	var historyCarousel = function () {
+	    $('#history .tab-content .active').find('.winners').slick({
+	        slidesToShow: 3,
+	        slidesToScroll: 1,
+	        autoplay: false,
+	        prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+	        nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></i></button>'
+	    });
+
+	    $('#history').on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+	        var target = $(e.target).attr("href")
+	        $(target).find('.winners').slick({
+	            slidesToShow: 3,
+	            slidesToScroll: 1,
+	            autoplay: false,
+	            prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-chevron-left"></i></button>',
+	            nextArrow: '<button type="button" class="slick-next"><i class="fa fa-chevron-right"></i></button>'
+	        });
+	    });
+	};
+
     return {
         init: function () {
-			runGoTop();
+            runGoTop();
+            historyCarousel();
         }
     };
 }();

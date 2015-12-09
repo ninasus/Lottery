@@ -93,3 +93,13 @@ d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 d:\_Loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Owin.xml
 d:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.Cookies.xml
 d:\_Loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.OAuth.xml
+E:\_loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Core.dll
+E:\_loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\_loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\_loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.Cookies.dll
+E:\_loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.OAuth.dll
+E:\_loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Core.xml
+E:\_loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\_loto\Lottery\Lotereya\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\_loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.Cookies.xml
+E:\_loto\Lottery\Lotereya\bin\Microsoft.Owin.Security.OAuth.xml

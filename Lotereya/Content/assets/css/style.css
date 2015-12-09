@@ -281,7 +281,7 @@ body {
 
 #waiting #progress {
   position: relative;
-  width: 310px; }
+  width: 100%; }
   #waiting #progress > p {
     text-transform: uppercase;
     font-weight: bold;
@@ -303,7 +303,8 @@ body {
     width: 310px;
     height: 310px;
     top: 50px;
-    left: 0;
+    left: 50%;
+    margin-left: -155px;
     background: url(../images/circle.png) 0 0 no-repeat;
     background-size: cover;
     -webkit-animation: rotating 4s linear infinite;
@@ -315,25 +316,35 @@ body {
 
 #result {
   text-align: center;
-  color: #343434; }
+  color: #fff;
+  background: #2d4d86;
+  height: 420px;
+  padding-top: 80px;
+  border-radius: 6px; }
   #result > p {
     font-size: 18px;
     text-align: left;
     margin-bottom: 60px; }
   #result > div {
     font-family: 'Impact', sans-serif;
-    font-size: 63px;
+    font-size: 64px;
     line-height: 1;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    height: 260px; }
+    margin-bottom: 50px;
+    text-transform: uppercase; }
     #result > div span {
-      color: #2d4d86;
-      font-size: 83px; }
+      font-size: 82px;
+      margin-bottom: 20px;
+      display: block; }
   #result button {
-    font-size: 18px;
-    border: 1px solid #2d4d86;
-    color: #2d4d86; }
+    width: 210px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 300;
+    border: 1px solid #fff;
+    background: #2d4d86;
+    color: #fff; }
+    #result button:hover {
+      background: #203760; }
 
 #rules {
   margin-bottom: 40px; }
@@ -399,8 +410,6 @@ body {
     margin: 0;
     padding: 0; }
     #history .winners li {
-      float: left;
-      margin-right: 50px;
       background: url(../images/award.png) 0 0 no-repeat;
       height: 186px; }
       #history .winners li .award {
@@ -421,6 +430,26 @@ body {
         color: #434343; }
         #history .winners li .info p {
           margin-bottom: 5px; }
+    #history .winners:not(.slick-slider) li {
+      float: left;
+      margin-right: 50px; }
+    #history .winners.slick-slider {
+      padding: 0 40px; }
+      #history .winners.slick-slider .slick-arrow {
+        border: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 50px;
+        font-size: 36px;
+        background: none;
+        color: #2d4d86; }
+        #history .winners.slick-slider .slick-arrow:hover {
+          color: #203760; }
+        #history .winners.slick-slider .slick-arrow.slick-prev {
+          left: 0; }
+        #history .winners.slick-slider .slick-arrow.slick-next {
+          right: 0; }
 
 #footer {
   background: #2d4d86;

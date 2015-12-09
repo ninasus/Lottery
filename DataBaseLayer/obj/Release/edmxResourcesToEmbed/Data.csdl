@@ -24,6 +24,8 @@
     <EntitySet Name="drawings" EntityType="LoterejaModel.drawing" />
     <EntitySet Name="winners" EntityType="LoterejaModel.winner" />
     <EntitySet Name="articles" EntityType="LoterejaModel.article" />
+    <EntitySet Name="options" EntityType="LoterejaModel.option" />
+    <FunctionImport Name="get_history" ReturnType="Collection(LoterejaModel.get_history_Result)" />
   </EntityContainer>
   <EntityType Name="drawing">
     <Key>
@@ -61,4 +63,22 @@
     <Property Name="place" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
+  <EntityType Name="option">
+    <Key>
+      <PropertyRef Name="id_option" />
+    </Key>
+    <Property Name="id_option" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="option_group" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="option_key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="field_type" Type="Byte" />
+    <Property Name="option_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="get_history_Result">
+    <Property Type="Int32" Name="id_article" Nullable="false" />
+    <Property Type="Int32" Name="JackPot" Nullable="false" />
+    <Property Type="String" Name="place" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="date" Nullable="false" Precision="16" />
+    <Property Type="Int32" Name="year" Nullable="false" />
+  </ComplexType>
 </Schema>

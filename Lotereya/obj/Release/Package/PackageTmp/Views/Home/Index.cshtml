@@ -1,9 +1,5 @@
 ﻿@model Lotereya.Models.settings
 
-@{
-    ViewBag.Title = "Бесплатная онлайн лотерея";
-}
-
 <header id="header" class="clearfix">
     <div class="container">
         <div class="row">
@@ -28,15 +24,29 @@
         @Html.Partial("WorkFieldPartial", new Tuple<int, int>(Model.minValue, Model.maxValue))
     </div>
 </div>
+<div id="rules">
+    <div class="container">
+        <div class="heading">
+            <i class="icon icon-cubic"></i>
+            Правила игры
+        </div>
+        <div class="post">
+            @ViewBag.rules
+        </div>
+    </div>
+</div>
+@{Html.RenderAction("HistoryPartial");}
+
 
 @section scripts {
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
     <!--SignalR script to update the chat page and send messages.-->
     <script>
-        $(function () {
+        $(function () {            
             $("#reset").attr("disabled", true).removeClass('active');
             $("#play").attr("disabled", true).removeClass('active');
+            
             var chat = $.connection.timing;
 
             chat.client.secondIs = function (type,tick) {
@@ -88,7 +98,7 @@
                     var elements = $("#priceElements .elementSel");
 
                     $("#field").load("/Home/ResultPartial?thereWinners=" + thereWinners + "&isWinner=" + isWinner, function() {
-                        var form = $(".price-form");
+                        var form = $("#WinnerFrm");
 
                         $('#modal_winner').modal('show');
 

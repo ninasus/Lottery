@@ -73,6 +73,9 @@
     <Compile Include="drawing.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>
+    <Compile Include="get_history_Result.cs">
+      <DependentUpon>Data.tt</DependentUpon>
+    </Compile>
     <Compile Include="option.cs">
       <DependentUpon>Data.tt</DependentUpon>
     </Compile>

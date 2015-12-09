@@ -72,5 +72,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="get_history" FunctionName="LoterejaModel.Store.get_history">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LoterejaModel.get_history_Result">
+          <ScalarProperty Name="id_article" ColumnName="id_article" />
+          <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+          <ScalarProperty Name="place" ColumnName="place" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="year" ColumnName="year" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

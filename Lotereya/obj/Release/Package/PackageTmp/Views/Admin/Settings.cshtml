@@ -2,10 +2,10 @@
 
 @{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    ViewBag.Title = "Настройки";
+    ViewBag.Title = "Настройки лотереи";
 }
 
-<h2>Настройки</h2>
+<h2>Настройки лотереи</h2>
 <hr />
 @if (ViewData["Error"] != null)
 {
@@ -43,11 +43,7 @@
                     <div class="form-horizontal">
                         @Html.ValidationSummary(true)
 
-
                         @Html.HiddenFor(model => model.id_settings)
-
-
-
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <h4>Время лотереи</h4>
@@ -117,8 +113,3 @@
         </div>
     </div>
 </div>
-
-
-@section Scripts {
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-}

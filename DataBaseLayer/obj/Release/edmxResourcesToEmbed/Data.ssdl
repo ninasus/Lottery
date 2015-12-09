@@ -19,6 +19,17 @@
     <Property Name="JackPot" Type="int" Nullable="false" />
     <Property Name="date" Type="smalldatetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="options">
+    <Key>
+      <PropertyRef Name="id_option" />
+    </Key>
+    <Property Name="id_option" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="option_group" Type="varchar" MaxLength="50" />
+    <Property Name="option_key" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="value" Type="varchar(max)" />
+    <Property Name="field_type" Type="tinyint" />
+    <Property Name="option_name" Type="varchar" MaxLength="100" />
+  </EntityType>
   <EntityType Name="settings">
     <Key>
       <PropertyRef Name="id_settings" />
@@ -51,9 +62,11 @@
     <Parameter Name="default_JackPot" Type="int" Mode="In" />
     <Parameter Name="stepJackPot" Type="int" Mode="In" />
   </Function>
+  <Function Name="get_history" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="LoterejaModelStoreContainer">
     <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="drawing" EntityType="Self.drawing" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="options" EntityType="Self.options" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="settings" EntityType="Self.settings" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="winners" EntityType="Self.winners" Schema="dbo" store:Type="Tables" />
   </EntityContainer>

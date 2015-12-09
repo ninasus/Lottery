@@ -67,6 +67,7 @@
           <Parameter Name="default_JackPot" Type="int" Mode="In" />
           <Parameter Name="stepJackPot" Type="int" Mode="In" />
         </Function>
+        <Function Name="get_history" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="LoterejaModelStoreContainer">
           <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="drawing" EntityType="Self.drawing" Schema="dbo" store:Type="Tables" />
@@ -103,6 +104,7 @@
           <EntitySet Name="winners" EntityType="LoterejaModel.winner" />
           <EntitySet Name="articles" EntityType="LoterejaModel.article" />
           <EntitySet Name="options" EntityType="LoterejaModel.option" />
+          <FunctionImport Name="get_history" ReturnType="Collection(LoterejaModel.get_history_Result)" />
         </EntityContainer>
         <EntityType Name="drawing">
           <Key>
@@ -151,6 +153,13 @@
           <Property Name="field_type" Type="Byte" />
           <Property Name="option_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="get_history_Result">
+          <Property Type="Int32" Name="id_article" Nullable="false" />
+          <Property Type="Int32" Name="JackPot" Nullable="false" />
+          <Property Type="String" Name="place" Nullable="false" MaxLength="200" />
+          <Property Type="DateTime" Name="date" Nullable="false" Precision="16" />
+          <Property Type="Int32" Name="year" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -228,6 +237,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="get_history" FunctionName="LoterejaModel.Store.get_history">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LoterejaModel.get_history_Result">
+                <ScalarProperty Name="id_article" ColumnName="id_article" />
+                <ScalarProperty Name="JackPot" ColumnName="JackPot" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="year" ColumnName="year" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

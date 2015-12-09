@@ -62,6 +62,7 @@
     <Parameter Name="default_JackPot" Type="int" Mode="In" />
     <Parameter Name="stepJackPot" Type="int" Mode="In" />
   </Function>
+  <Function Name="get_history" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="LoterejaModelStoreContainer">
     <EntitySet Name="article" EntityType="Self.article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="drawing" EntityType="Self.drawing" Schema="dbo" store:Type="Tables" />

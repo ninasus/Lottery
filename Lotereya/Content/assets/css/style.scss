@@ -177,7 +177,7 @@ body {
 #waiting {
   #progress {
     position: relative;
-    width: 310px;
+    width: 100%;
     > p {
       text-transform: uppercase;
       font-weight: bold;
@@ -203,7 +203,8 @@ body {
       width: 310px;
       height: 310px;
       top: 50px;
-      left: 0;
+      left: 50%;
+	  margin-left:-155px;
       background: url(../images/circle.png) 0 0 no-repeat;
       background-size: cover;
       -webkit-animation: rotating 4s linear infinite;
@@ -217,7 +218,11 @@ body {
 }
 #result {
   text-align: center;
-  color: #343434;
+  color: #fff;
+  background:#2d4d86;
+  height:420px;
+  padding-top:80px;
+  border-radius:6px;
   > p {
     font-size: 18px;
     text-align: left;
@@ -225,21 +230,28 @@ body {
   }
   > div {
     font-family: 'Impact', sans-serif;
-    font-size: 63px;
+    font-size: 64px;
     line-height: 1;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
     text-transform: uppercase;
-    height: 260px;
 
     span {
-      color: #2d4d86;
-      font-size: 83px;
+      font-size: 82px;
+	  margin-bottom:20px;
+	  display:block;
     }
   }
   button {
-    font-size: 18px;
-    border: 1px solid #2d4d86;
-    color: #2d4d86;
+	width:210px;
+	height:50px;
+    font-size: 20px;
+	font-weight: 300;
+    border: 1px solid #fff;
+	background: #2d4d86;
+    color: #fff;
+	&:hover {
+		background: darken(#2d4d86, 10%);
+	}
   }
 }
 #rules {
@@ -319,8 +331,6 @@ body {
     margin: 0;
     padding: 0;
     li {
-      float: left;
-      margin-right: 50px;
       background: url(../images/award.png) 0 0 no-repeat;
       height: 186px;
 
@@ -346,6 +356,32 @@ body {
         }
       }
     }
+	&:not(.slick-slider) li {
+      float: left;
+      margin-right: 50px;
+	}
+	&.slick-slider {
+		padding:0 40px;
+		.slick-arrow {
+			border:none;
+			margin:0;
+			padding:0;
+			position:absolute;
+			top:50px;
+			font-size:36px;
+			background:none;
+			color:#2d4d86;
+			&:hover {
+				color:darken(#2d4d86, 10%);
+			}
+			&.slick-prev {
+				left:0;
+			}
+			&.slick-next {
+				right:0;
+			}
+		}
+	}
   }
 }
 #footer {

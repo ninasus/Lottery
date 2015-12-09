@@ -1,0 +1,56 @@
+﻿@model List<Lotereya.Models.articleView>
+
+<div id="history">
+    @if ((Model != null) && (Model.Count != 0))
+    {
+        int count = 0, count1 = 0;
+        <div class="heading">
+            <div class="container">
+                <ul class="nav nav-tabs">
+                    @foreach (var item in Model.Select(it => it.year).Distinct())
+                    {
+                        <li @(count == 0 ? "class=active" : "")><a href=@("#year" + item) data-toggle="tab">@item</a></li>
+                        count++;
+                    }
+                    @*<li class="active"><a href="#year2015" data-toggle="tab">2015</a></li>
+                    <li><a href="#year2014" data-toggle="tab">2014</a></li>
+                    <li><a href="#year2013" data-toggle="tab">2013</a></li>
+                    <li><a href="#year2012" data-toggle="tab">2012</a></li>*@
+                </ul>
+                <i class="icon icon-lenta"></i>
+                История выигрышей
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="container">
+            <div class="tab-content">
+                @foreach (var item in Model.Select(it => it.year).Distinct())
+                {
+                    <div class="tab-pane @(count1 == 0 ? "active" : "")" id=@("year" + item)>
+                        <ul class="winners">
+                            @foreach (var it in Model.Where(dd => dd.year == item))
+                            {
+                                <li>
+                                    <div class="award">
+                                        @it.JackPot $
+                                    </div>
+                                    <div class="info">
+                                        <p>@it.date.ToShortDateString()</p>
+                                        @it.place
+                                    </div>
+                                </li>
+                            }                                
+                        </ul>
+                    </div>
+                    count1++;
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            <b>Нет победителей!</b>
+        </div>
+    }
+</div>

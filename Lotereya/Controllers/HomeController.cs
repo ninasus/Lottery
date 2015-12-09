@@ -11,6 +11,7 @@ namespace Lotereya.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             settings model = settings.Get();
@@ -19,7 +20,6 @@ namespace Lotereya.Controllers
             using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
             {
                 List<OptionsViewModel> fields = (from g in dbc.options
-                          where g.option_group == "4"
                           select new OptionsViewModel
                           {
                               id_option = g.id_option,
@@ -30,16 +30,24 @@ namespace Lotereya.Controllers
                               option_name = g.option_name
                           }).ToList();
 
-                string title = fields.Where(f => f.id_option == 6).FirstOrDefault().ToString();
+                string title = fields.Where(f => f.id_option == 6).FirstOrDefault().value;
                 if (!String.IsNullOrEmpty(title))
                     ViewBag.Title = title;
                 else
                     ViewBag.Title = "Бесплатная онлайн лотерея";
-                ViewBag.Description = fields.Where(f => f.id_option == 7).FirstOrDefault().ToString();
-                ViewBag.Keywords = fields.Where(f => f.id_option == 8).FirstOrDefault().ToString();
+                ViewBag.Description = fields.Where(f => f.id_option == 7).FirstOrDefault().value;
+                ViewBag.Keywords = fields.Where(f => f.id_option == 8).FirstOrDefault().value;
+
+                ViewBag.rules = fields.Where(f => f.id_option == 4).FirstOrDefault().value;
             }
 
             return View(model);
+        }
+
+        public ActionResult HistoryPartial()
+        {
+            var model = articleView.Get();
+            return PartialView(model);
         }
 
         public ActionResult GamePartial()
