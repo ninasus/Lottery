@@ -342,5 +342,11 @@ namespace Lotereya.Controllers
                 ModelState.AddModelError("", error);
             }
         }
+
+
+        public ActionResult Setup()
+        {
+            return View();
+        }
     }
 }

@@ -1,0 +1,53 @@
+﻿@model Lotereya.Models.settings
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Общие настройки";
+}
+
+<h2>Настройки</h2>
+<hr />
+@if (ViewData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @ViewData["Error"]
+    </div>
+}
+
+@if (ViewData["Info"] != null)
+{
+    <div class="alert alert-info">
+        @ViewData["Info"]
+    </div>
+}
+<div class="row">
+    <div class="col-sm-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">Общие</div>
+            <div class="panel-body">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Реклама</div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">Тексты</div>
+            <div class="panel-body">
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">СЕО настрйоки</div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}

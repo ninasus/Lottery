@@ -1,0 +1,35 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Ошибка 404";
+}
+
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-4">
+                <div id="logo">
+                    <span>Бесплатная</span> онлайн лотерея
+                    <div class="balls"></div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="content">
+    <div class="container">
+        <div class="not_found text-center">
+            <h1>404!</h1>
+            <p class="lead">То, что Вы ищите находится не здесь.
+                <br>
+                Перейдите <a href="@Url.Action("Index", "Home")">на главную </a>или проверьте адрес.</p>
+            <div class="widget padding-top">
+            </div>
+        </div>
+    </div>
+</section>

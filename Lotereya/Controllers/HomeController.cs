@@ -79,7 +79,7 @@ namespace Lotereya.Controllers
                     }
                     messageBody = string.Format(messageBody, model.id_draw, model.name, model.email, model.phone);
 
-                    CoreHelper.SendMail(null, "pfree-online-lottery.com", null, null, "Новый победитель", messageBody);
+                    CoreHelper.SendMail(null, "free-online-lottery.com", null, null, "Новый победитель", messageBody);
 
                 }
                 catch (Exception ex)
