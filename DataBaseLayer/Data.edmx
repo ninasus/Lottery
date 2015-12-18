@@ -23,6 +23,7 @@
           <Property Name="count_winner" Type="int" />
           <Property Name="JackPot" Type="int" Nullable="false" />
           <Property Name="date" Type="smalldatetime" Nullable="false" />
+          <Property Name="count_player" Type="int" />
         </EntityType>
         <EntityType Name="options">
           <Key>
@@ -115,6 +116,7 @@
           <Property Name="count_winner" Type="Int32" />
           <Property Name="JackPot" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="count_player" Type="Int32" />
         </EntityType>
         <ComplexType Name="create_draw_Result">
           <Property Type="Decimal" Name="id_draw" Nullable="true" Precision="38" Scale="0" />
@@ -193,6 +195,7 @@
           <EntitySetMapping Name="drawings">
             <EntityTypeMapping TypeName="LoterejaModel.drawing">
               <MappingFragment StoreEntitySet="drawing">
+                <ScalarProperty Name="count_player" ColumnName="count_player" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="JackPot" ColumnName="JackPot" />
                 <ScalarProperty Name="count_winner" ColumnName="count_winner" />

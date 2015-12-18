@@ -18,6 +18,7 @@
     <Property Name="count_winner" Type="int" />
     <Property Name="JackPot" Type="int" Nullable="false" />
     <Property Name="date" Type="smalldatetime" Nullable="false" />
+    <Property Name="count_player" Type="int" />
   </EntityType>
   <EntityType Name="options">
     <Key>

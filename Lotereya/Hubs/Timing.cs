@@ -21,6 +21,7 @@ namespace Lotereya.Hubs
             Count++;
 
             Draw draw = Draw.Instance();
+            draw.CountPlay = draw.CountPlay + 1;
 
             string removableConnection = draw.Winners.FirstOrDefault(item => item == Context.ConnectionId);
             if(removableConnection!=null)

@@ -15,6 +15,8 @@ namespace Lotereya.Models
         public int[] PriceElements { get; set; }
         public List<string> Winners { get; set; }
 
+        public int CountPlay {get;set;}
+
         protected Draw()
         {
             //PriceElements = new int[CountElement];
@@ -54,6 +56,7 @@ namespace Lotereya.Models
                 if (result != null)
                 {
                     result.count_winner = Winners.Count;
+                    result.count_player = CountPlay;
 
                     if (PriceElements != null)
                     {

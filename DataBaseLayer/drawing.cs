@@ -19,5 +19,6 @@ namespace DataBaseLayer
         public Nullable<int> count_winner { get; set; }
         public int JackPot { get; set; }
         public System.DateTime date { get; set; }
+        public Nullable<int> count_player { get; set; }
     }
 }

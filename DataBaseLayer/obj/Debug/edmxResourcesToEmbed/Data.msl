@@ -28,6 +28,7 @@
     <EntitySetMapping Name="drawings">
       <EntityTypeMapping TypeName="LoterejaModel.drawing">
         <MappingFragment StoreEntitySet="drawing">
+          <ScalarProperty Name="count_player" ColumnName="count_player" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="JackPot" ColumnName="JackPot" />
           <ScalarProperty Name="count_winner" ColumnName="count_winner" />
