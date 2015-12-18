@@ -2,13 +2,14 @@
 @import 'helpers';
 
 $color: #6b6b6b;
-$font: 'Arial', sans-serif;
+$font: 'Open Sans', sans-serif;
+$font2: 'Roboto', sans-serif;
 
 html {
 }
 body {
   font-family: $font;
-  font-size: 14px;
+  font-size: 15px;
   color: $color;
   background:#fff;
 
@@ -37,6 +38,8 @@ body {
     font-weight: bold;
     color: #fff;
     text-align: center;
+	display:block;
+	text-decoration:none;
     span {
       display: block;
       font-size: 36px;
@@ -98,6 +101,20 @@ body {
   border-bottom: 1px solid #e8e8e8;
   margin-bottom: 20px;
   padding-bottom: 20px;
+  .rower {
+	  .col-xs-5 {
+		width:360px;
+	  }
+	  .col-xs-7 {
+		width:610px;
+		
+	  }
+	  .col-promo {
+		img {
+			width:100%;
+		}
+		}
+  }
 }
 #game {
   .col-xs-5 {
@@ -120,7 +137,12 @@ body {
         color: #626262;
         padding: 7px 0 0 0;
         cursor: pointer;
-        &:hover, &.selectedElement {
+		transition: all 0.3s liner;
+        &:hover {
+          border: 1px solid darken(#c3c3c3, 40%);
+		  color: darken(#626262, 10%);
+        }
+		&.selectedElement {
           color: #fff;
           background: #2d4d86;
           border: 1px solid #264377;
@@ -165,7 +187,8 @@ body {
     color: #000;
     font-size: 80px;
     line-height: 1.2;
-    font-family: Impact;
+    font-family: $font2;
+	font-weight:900;
     span {
       display: block;
       text-align: center;
@@ -193,9 +216,10 @@ body {
         margin: 0;
       }
       .time {
-        font-size: 110px;
+        font-size: 135px;
         line-height: 1;
-        font-family: 'Impact', sans-serif;
+        font-family: $font2;
+		font-weight:900;	
       }
     }
     .loading {
@@ -220,23 +244,24 @@ body {
   text-align: center;
   color: #fff;
   background:#2d4d86;
-  height:420px;
+  height:400px;
   padding-top:80px;
-  border-radius:6px;
+  border-radius:5px;
   > p {
     font-size: 18px;
     text-align: left;
     margin-bottom: 60px;
   }
   > div {
-    font-family: 'Impact', sans-serif;
-    font-size: 64px;
+    font-family: $font2;
+	font-weight:900;
+    font-size: 45px;
     line-height: 1;
     margin-bottom: 50px;
     text-transform: uppercase;
 
     span {
-      font-size: 82px;
+      font-size: 60px;
 	  margin-bottom:20px;
 	  display:block;
     }
@@ -524,4 +549,15 @@ body {
       margin: -15px -10px 0 0;
     }
   }
+}
+
+.post {
+	text-align:justify;
+	font-family: arial;
+	table {
+		td {
+			vertical-align:top;
+			padding:10px;
+		}
+	}
 }

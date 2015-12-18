@@ -39,6 +39,9 @@ namespace Lotereya.Controllers
                 ViewBag.Keywords = fields.Where(f => f.id_option == 8).FirstOrDefault().value;
 
                 ViewBag.rules = fields.Where(f => f.id_option == 4).FirstOrDefault().value;
+
+
+                ViewBag.code = fields.Where(f => f.id_option == 2).FirstOrDefault().value;
             }
 
             return View(model);
@@ -52,6 +55,23 @@ namespace Lotereya.Controllers
 
         public ActionResult GamePartial()
         {
+            using (DataBaseLayer.LoterejaEntities dbc = new DataBaseLayer.LoterejaEntities())
+            {
+                List<OptionsViewModel> fields = (from g in dbc.options
+                                                 select new OptionsViewModel
+                                                 {
+                                                     id_option = g.id_option,
+                                                     option_group = g.option_group,
+                                                     option_key = g.option_key,
+                                                     value = g.value,
+                                                     field_type = g.field_type,
+                                                     option_name = g.option_name
+                                                 }).ToList();
+
+                string title = fields.Where(f => f.id_option == 6).FirstOrDefault().value;
+
+                ViewBag.code = fields.Where(f => f.id_option == 2).FirstOrDefault().value;
+            }
             return PartialView();
         }
 

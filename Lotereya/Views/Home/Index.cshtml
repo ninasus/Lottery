@@ -7,10 +7,10 @@
                 @Html.Partial("SelectedElementsPartial", Model.countValue)
             </div>
             <div class="col-xs-4">
-                <div id="logo">
+                <a href="@Url.Action("Index")" id="logo">
                     <span>Бесплатная</span> онлайн лотерея
                     <div class="balls"></div>
-                </div>
+                </a>
             </div>
             <div class="col-xs-4">
                 @Html.Partial("PriceElementsPartial", Model.countValue)
@@ -31,13 +31,11 @@
             Правила игры
         </div>
         <div class="post">
-            @ViewBag.rules
+            @Html.Raw(ViewBag.rules.Replace(Environment.NewLine, "<br/>"))
         </div>
     </div>
 </div>
 @{Html.RenderAction("HistoryPartial");}
-
-
 @section scripts {
     <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
     <script src="~/signalr/hubs"></script>
@@ -97,7 +95,7 @@
                 {
                     var elements = $("#priceElements .elementSel");
 
-                    $("#field").load("/Home/ResultPartial?thereWinners=" + thereWinners + "&isWinner=" + isWinner, function() {
+                    $("#field .col_result").load("/Home/ResultPartial?thereWinners=" + thereWinners + "&isWinner=" + isWinner, function() {
                         var form = $("#WinnerFrm");
 
                         $('#modal_winner').modal('show');

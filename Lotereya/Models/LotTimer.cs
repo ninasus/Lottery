@@ -76,8 +76,8 @@ namespace Lotereya.Models
             {
                 draw.id_draw = Convert.ToInt32(id.id_draw.Value);
                 draw.JackPot = id.JackPot.Value;
-                draw.PriceElements = new int[] { 1, 2, 3, 4, 5, 6 };
-
+                //draw.PriceElements = new int[] { 1, 2, 3, 4, 5, 6 };
+				draw.PriceElements =GenerateRandomValues.Get(Count, minValue, maxValue);
                 Lotereya.Hubs.Timing.sendJackPot();
             }
             else
